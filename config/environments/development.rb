@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -71,15 +73,13 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   # class Application < Rails::Application
 
   #   # config.web_console.permissions = '172.17.0.1'
-  
-  # end
 
+  # end
 end
 ENV['GOOGLE_OAUTH_CLIENT_ID'] = '55513358452-gc4ur4mf32ci96ijcsacic3qj7ih6qsm.apps.googleusercontent.com'
 ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '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'
