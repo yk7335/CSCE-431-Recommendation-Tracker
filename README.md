@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # CSCE-431-Recommendation-Tracker
-CSCE-431-Recommendation-Tracker for Dr. Lightfoot
-=======
+
 # README
 
 This README would normally document whatever steps are necessary to get the
