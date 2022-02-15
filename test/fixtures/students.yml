@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  firstname: MyString
+  lastname: MyString
+  notes: MyString
+  uin: MyString
+  major: MyString
+  finalgrade: 1.5
+  updatedgrade: 1.5
+
+two:
+  email: MyString
+  firstname: MyString
+  lastname: MyString
+  notes: MyString
+  uin: MyString
+  major: MyString
+  finalgrade: 1.5
+  updatedgrade: 1.5
