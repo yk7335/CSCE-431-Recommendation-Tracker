@@ -2,7 +2,7 @@
 
 ## Introduction ##
 
-Application Description
+This application was made for Dr. Lightfoot, a Computer Science professor at Texas A&M University. The purpose of this application is to store information about all of Lightfoot's students, so he can create more personalized and genuine recommendation letters.
 
 ## Requirements ##
 
@@ -56,7 +56,13 @@ The application can be seen using a browser and navigating to http://localhost:3
 
 ## Environmental Variables/Files ##
 
-** Add instructions/description if your application requires it.
+If you want to duplicate this application locally, you will need to set up Google OAuth for user login. Instructions can be found here: https://medium.com/@adamlangsner/google-oauth-rails-5-using-devise-and-omniauth-1b7fa5f72c8e. When setting up your own Google OAuth make sure to save the following environmental variables:
+
+`GOOGLE_OAUTH_CLIENT_ID`
+`GOOGLE_OAUTH_CLIENT_SECRET`
+
+and save them into your development.rb file
+
 
 ## Deployment ##
 
@@ -65,7 +71,7 @@ The application can be seen using a browser and navigating to http://localhost:3
 
 ## CI/CD ##
 
-TBD
+We use github actions to run the gems rubocop, brakeman, and rspec.
 
 ## Support ##
 
