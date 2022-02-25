@@ -117,6 +117,7 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
+    hirb (0.7.3)
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -314,6 +315,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  hirb
   jbuilder (~> 2.7)
   listen (~> 3.3)
   omniauth

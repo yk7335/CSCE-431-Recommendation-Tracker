@@ -2,6 +2,7 @@
 
 <h1>Students</h1>
 
+
 <table>
   <thead>
     <tr>
@@ -13,6 +14,8 @@
       <th>Major</th>
       <th>Finalgrade</th>
       <th>Updatedgrade</th>
+      <th>Classname</th>
+      <th>Recletter</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,6 +31,8 @@
         <td><%= student.major %></td>
         <td><%= student.finalgrade %></td>
         <td><%= student.updatedgrade %></td>
+        <td><%= student.classname %></td>
+        <td><%= student.recletter %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,4 +43,12 @@
 
 <br>
 
+
 <%= link_to 'New Student', new_student_path %>
+<br>
+<br>
+<h3> Import Students </h3>
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Students" %>
+<% end %>

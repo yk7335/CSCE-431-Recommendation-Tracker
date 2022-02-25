@@ -9,8 +9,10 @@ class CreateStudents < ActiveRecord::Migration[6.1]
       t.string :notes
       t.string :uin
       t.string :major
-      t.float :finalgrade
-      t.float :updatedgrade
+      t.string :finalgrade
+      t.string :updatedgrade
+      t.string :classname
+      t.string :recletter
 
       t.timestamps
     end

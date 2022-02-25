@@ -36,6 +36,9 @@ gem 'omniauth-google-oauth2'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rexml'
 
+# to view tables for debugging (possibly delete after for security reasons?)
+gem 'hirb'
+
 # Rubocop for formatting
 gem 'rubocop', '~> 1.25', require: false
 

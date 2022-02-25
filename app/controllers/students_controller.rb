@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
 
@@ -9,7 +8,8 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1 or /students/1.json
-  def show; end
+  def show
+  end
 
   # GET /students/new
   def new
@@ -17,7 +17,8 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /students or /students.json
   def create
@@ -57,6 +58,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def import
+    Student.import(params[:file])
+    redirect_to students_path, notice: "Students Imported Successfully"
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -66,6 +72,6 @@ class StudentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_params
-    params.require(:student).permit(:email, :firstname, :lastname, :notes, :uin, :major, :finalgrade, :updatedgrade)
+    params.require(:student).permit(:email, :firstname, :lastname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter)
   end
 end
