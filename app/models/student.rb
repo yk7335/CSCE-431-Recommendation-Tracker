@@ -2,7 +2,7 @@
 class Student < ApplicationRecord
 
   # csv upload
-  def self.import(file)
+  def self.import(file, year, semester)
     CSV.foreach(file.path, headers: true) do |row|
         student_hash = Student.new
         student_hash.lastname = row[0]
@@ -15,8 +15,8 @@ class Student < ApplicationRecord
         student_hash.finalgrade = row[14]
         student_hash.updatedgrade = row[15]
         student_hash.recletter = "undecided"
-        student_hash.semester = file.path.to_s
-        student_hash.year = 2018
+        student_hash.semester = semester.to_s
+        student_hash.year = year
         student_hash.save
     end
   end

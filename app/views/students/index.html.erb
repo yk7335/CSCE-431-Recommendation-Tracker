@@ -55,9 +55,18 @@
 <h3> Import Students </h3>
 
 
-
 <%= form_tag import_students_path, multipart: true do %>
+
+<%= form_with do |form| %>
+
+  <%= form.label :semester %>
+  <%= form.text_field :semester %>
+
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+
   <%= file_field_tag :file %>
   <%= submit_tag "Upload Students" %>
 <% end %>
 
+<% end %>

@@ -59,7 +59,7 @@ class StudentsController < ApplicationController
   end
 
   def import
-    Student.import(params[:file])
+    Student.import(params[:file], params[:year], params[:semester])
     redirect_to students_path, notice: "Students Imported Successfully"
   end
 
