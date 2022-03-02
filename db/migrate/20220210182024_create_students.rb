@@ -13,7 +13,8 @@ class CreateStudents < ActiveRecord::Migration[6.1]
       t.string :updatedgrade
       t.string :classname
       t.string :recletter
-
+      t.string :semester
+      t.integer :year
       t.timestamps
     end
   end

@@ -10,11 +10,13 @@ class Student < ApplicationRecord
         student_hash.uin = row[3]
         student_hash.email = row[5]
         student_hash.classname = row[7]
-        student_hash.notes = ""
+        student_hash.notes = "THIS IS TESTING"
         student_hash.major = row[9]
         student_hash.finalgrade = row[14]
         student_hash.updatedgrade = row[15]
         student_hash.recletter = "undecided"
+        student_hash.semester = file.path.to_s
+        student_hash.year = 2018
         student_hash.save
     end
   end
