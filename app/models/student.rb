@@ -3,7 +3,7 @@ class Student < ApplicationRecord
 
   # csv upload
   def self.import(file, year, semester)
-    CSV.foreach(file.path, headers: true) do |row|
+    CSV.foreach(file, headers: true) do |row|
         student_hash = Student.new
         student_hash.lastname = row[0]
         student_hash.firstname = row[1]
@@ -21,12 +21,16 @@ class Student < ApplicationRecord
     end
   end
 
-  # validates :email, presence: true
-  # validates :firstname, presence: true
-  # validates :lastname, presence: true
-  # validates :notes, presence: true
-  # validates :uin, presence: true
-  # validates :major, presence: true
-  # validates :finalgrade, presence: true
-  # validates :updatedgrade, presence: true
+  validates :email, presence: true
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :notes, presence: true
+  validates :uin, presence: true
+  validates :major, presence: true
+  validates :finalgrade, presence: true
+  validates :updatedgrade, presence: true
+  validates :classname, presence: true
+  validates :recletter, presence: true
+  validates :semester, presence: true
+  validates :year, presence: true
 end
