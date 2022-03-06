@@ -100,6 +100,7 @@ RSpec.describe Student, type: :model do
     described_class.destroy(email: 'mihiranpandey@gmail.com', firstname: 'mihiran', lastname: 'pandey',
                           notes: 'very cool guy', uin: '100000', major: 'cs', finalgrade: 'A', updatedgrade: 'C',
                           classname: 'cs315', recletter: 'yes', year: '2021' , semester: 'Fall')
+    expect(subject).to eq(false)
   end
 end
 # ------------------------------------
