@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Student < ApplicationRecord
-  has_many_attached :images
+  has_one_attached :student_images
   # csv upload
   def self.import(file, year, semester)
     CSV.foreach(file.path, headers: true) do |row|
@@ -20,7 +20,6 @@ class Student < ApplicationRecord
         student_hash.save
     end
   end
-
 
 
   # validates :email, presence: true

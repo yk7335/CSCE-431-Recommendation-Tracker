@@ -63,18 +63,6 @@
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
 
-<div>
-
-</div>
-
-
-
-<% (0...@student.images.count).each do |image|%>
-  <%= image_tag(@student.images[image]) %>
-<% end %>
-
-
-
 <br>
 <br>
 

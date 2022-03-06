@@ -68,20 +68,19 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Upload Students" %>
 
-
-<br>
-<h3> Import Pictures </h3>
-
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-    <%= submit_tag "Upload Images" %>
-
 <% end %>
 
 <br>
-<% (0...@student.images.count).each do |image|%>
-  <%= image_tag(@student.images[image]) %>
-<% end %>
+<br>
 
+<p>
+<% @images.each do |semester_image| %>
+  <%= semester_image.id%>
+  <%= (0...@semester_image.student_images.count).each do |image| %>
+    <div style="width:300px; height:300px;">
+      <%= image_tag(@semester_image.student_images[image], style: 'width:100%; height: auto')%>
+  <%end%>
+<%end%>
+</p>
 
 <% end %>
