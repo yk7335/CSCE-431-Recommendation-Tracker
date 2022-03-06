@@ -67,6 +67,32 @@
 
 </div>
 
+
+
+<% (0...@student.images.count).each do |image|%>
+  <%= image_tag(@student.images[image]) %>
+<% end %>
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>

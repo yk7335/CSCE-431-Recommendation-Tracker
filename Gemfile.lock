@@ -135,6 +135,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.4)
@@ -318,6 +319,7 @@ DEPENDENCIES
   hirb
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick (~> 4.8)
   omniauth
   omniauth-google-oauth2
   pg (~> 1.1)
