@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Student < ApplicationRecord
-
+  has_one :image
   # csv upload
   def self.import(file, year, semester)
     CSV.foreach(file, headers: true) do |row|

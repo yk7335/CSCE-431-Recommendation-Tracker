@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :images
   # root 'students#index'
   root to: 'dashboards#show'
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
@@ -13,6 +14,10 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  resources :images do 
+    collection { post :import }
+  end
+  
   resources :users
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
