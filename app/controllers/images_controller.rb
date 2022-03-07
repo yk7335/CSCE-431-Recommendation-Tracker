@@ -4,7 +4,6 @@ class ImagesController < ApplicationController
   # GET /images or /images.json
   def index
     @images = Image.all
-    @students = Student.all
   end
 
   # GET /images/1 or /images/1.json
@@ -58,15 +57,25 @@ class ImagesController < ApplicationController
     end
   end
 
+
+  def import
+    params[:files].each do |f|
+      image_hash = Image.new
+      image_hash.uin = (f.original_filename.to_s)[0..-5]
+      image_hash.photo.attach(f)
+      image_hash.save
+    end    
+    redirect_to images_path, notice: "Images Imported Successfully"
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = Image.find(params[:id])
-      #@image = Image.find(params[:image])
     end
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:id, student_images: [])
+      params.require(:image).permit(:uin, :photo, :files=>[])
     end
 end
