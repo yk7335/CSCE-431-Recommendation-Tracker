@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
   # GET /images or /images.json
   def index
     @images = Image.all
+    @students = Student.all
   end
 
   # GET /images/1 or /images/1.json
@@ -60,7 +61,8 @@ class ImagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
-      @image = Image.find(params[:id], student_images: [])
+      @image = Image.find(params[:id])
+      #@image = Image.find(params[:image])
     end
 
     # Only allow a list of trusted parameters through.

@@ -74,13 +74,12 @@
 <br>
 
 <p>
-<% @images.each do |semester_image| %>
-  <%= semester_image.id%>
-  <%= (0...@semester_image.student_images.count).each do |image| %>
-    <div style="width:300px; height:300px;">
-      <%= image_tag(@semester_image.student_images[image], style: 'width:100%; height: auto')%>
-  <%end%>
+<% @images.each do |semester_images| %>
+  <%= semester_images.id%>
+  <%= link_to 'Show', semester_images %>
 <%end%>
 </p>
+
+
 
 <% end %>
