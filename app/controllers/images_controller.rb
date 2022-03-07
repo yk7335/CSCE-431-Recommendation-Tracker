@@ -57,6 +57,7 @@ class ImagesController < ApplicationController
     end
   end
 
+
   def import
     params[:files].each do |f|
       image_hash = Image.new
@@ -66,7 +67,7 @@ class ImagesController < ApplicationController
     end    
     redirect_to images_path, notice: "Images Imported Successfully"
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image

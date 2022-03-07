@@ -66,6 +66,19 @@
 
   <%= file_field_tag :file %>
   <%= submit_tag "Upload Students" %>
+
 <% end %>
+
+<br>
+<br>
+
+<p>
+<% @images.each do |semester_images| %>
+  <%= semester_images.id%>
+  <%= link_to 'Show', semester_images %>
+<%end%>
+</p>
+
+
 
 <% end %>
