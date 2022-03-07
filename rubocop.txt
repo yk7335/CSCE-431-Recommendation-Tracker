@@ -1,0 +1,88 @@
+Inspecting 73 files
+....CC.CCCCCC..CC........C........C..........C........CCCC.C.....C.......
+
+Offenses:
+
+app/controllers/admins/omniauth_callbacks_controller.rb:4:3: C: Style/Documentation: Missing top-level documentation comment for class Admins::OmniauthCallbacksController.
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/admins/sessions_controller.rb:4:3: C: Style/Documentation: Missing top-level documentation comment for class Admins::SessionsController.
+  class SessionsController < Devise::SessionsController
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/dashboards_controller.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class DashboardsController.
+class DashboardsController < ApplicationController
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/students_controller.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class StudentsController.
+class StudentsController < ApplicationController
+^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class UsersController.
+class UsersController < ApplicationController
+^^^^^^^^^^^^^^^^^^^^^
+app/helpers/application_helper.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for module ApplicationHelper.
+module ApplicationHelper
+^^^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/students_helper.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for module StudentsHelper.
+module StudentsHelper
+^^^^^^^^^^^^^^^^^^^^^
+app/helpers/users_helper.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for module UsersHelper.
+module UsersHelper
+^^^^^^^^^^^^^^^^^^
+app/models/admin.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Admin.
+class Admin < ApplicationRecord
+^^^^^^^^^^^
+app/models/application_record.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ApplicationRecord.
+class ApplicationRecord < ActiveRecord::Base
+^^^^^^^^^^^^^^^^^^^^^^^
+bin/bundle:24:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for cli_arg_version is too high. [9/7]
+  def cli_arg_version ...
+  ^^^^^^^^^^^^^^^^^^^
+bin/bundle:24:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def cli_arg_version ...
+  ^^^^^^^^^^^^^^^^^^^
+bin/bundle:24:3: C: Metrics/PerceivedComplexity: Perceived complexity for cli_arg_version is too high. [9/8]
+  def cli_arg_version ...
+  ^^^^^^^^^^^^^^^^^^^
+bin/bundle:91:3: C: Metrics/MethodLength: Method has too many lines. [12/10]
+  def activate_bundler ...
+  ^^^^^^^^^^^^^^^^^^^^
+bin/bundle:104:121: C: Layout/LineLength: Line is too long. [198/120]
+    warn "Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`"
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/application.rb:12:3: C: Style/Documentation: Missing top-level documentation comment for class RecommendationTracker::Application.
+  class Application < Rails::Application
+  ^^^^^^^^^^^^^^^^^
+config/initializers/devise.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/devise.rb:17:121: C: Layout/LineLength: Line is too long. [154/120]
+  # config.secret_key = '1666e804370b977b593f2be3a7a9d2921971a2698502fcc7b317b45af753b3ab3d82c76bd63f838117e99899535d54f0d237893ba3dff89834985f02046bc518'
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+config/initializers/devise.rb:131:121: C: Layout/LineLength: Line is too long. [150/120]
+  # config.pepper = '03d0d5fc8967d5b059b68817fda06ffcb4afe28d74e520b04b04b73ea666a0c971ef97d4d57a03d43cdb53e9524c09dda4710a82ded95535d92a728071bb65d3'
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20220208205701_create_users.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CreateUsers.
+class CreateUsers < ActiveRecord::Migration[6.1]
+^^^^^^^^^^^^^^^^^
+db/migrate/20220210182024_create_students.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CreateStudents.
+class CreateStudents < ActiveRecord::Migration[6.1]
+^^^^^^^^^^^^^^^^^^^^
+db/migrate/20220210182024_create_students.rb:4:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def change ...
+  ^^^^^^^^^^
+db/migrate/20220211193712_devise_create_admins.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class DeviseCreateAdmins.
+class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
+^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:15:1: C: Metrics/BlockLength: Block has too many lines. [28/25]
+ActiveRecord::Schema.define(version: 20_220_211_193_712) do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/feature/Integration_spec.rb:1:1: C: Naming/FileName: The name of this source file (Integration_spec.rb) should use snake_case.
+# frozen_string_literal: true
+^
+test/controllers/students_controller_test.rb:24:121: C: Layout/LineLength: Line is too long. [165/120]
+                                lastname: @student.lastname, major: @student.major, notes: @student.notes, uin: @student.uin, updatedgrade: @student.updatedgrade } }
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test/controllers/students_controller_test.rb:43:121: C: Layout/LineLength: Line is too long. [164/120]
+                               lastname: @student.lastname, major: @student.major, notes: @student.notes, uin: @student.uin, updatedgrade: @student.updatedgrade } }
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+73 files inspected, 27 offenses detected

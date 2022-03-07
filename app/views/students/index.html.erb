@@ -2,9 +2,12 @@
 
 <h1>Students</h1>
 
+
 <table>
   <thead>
     <tr>
+      <th>Semester</th>
+      <th>Year</th>
       <th>Email</th>
       <th>Firstname</th>
       <th>Lastname</th>
@@ -13,6 +16,8 @@
       <th>Major</th>
       <th>Finalgrade</th>
       <th>Updatedgrade</th>
+      <th>Classname</th>
+      <th>Recletter</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +25,8 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
+        <td><%= student.semester%></td>
+        <td><%= student.year %></td>
         <td><%= student.email %></td>
         <td><%= student.firstname %></td>
         <td><%= student.lastname %></td>
@@ -28,6 +35,8 @@
         <td><%= student.major %></td>
         <td><%= student.finalgrade %></td>
         <td><%= student.updatedgrade %></td>
+        <td><%= student.classname %></td>
+        <td><%= student.recletter %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,4 +47,38 @@
 
 <br>
 
+
+
 <%= link_to 'New Student', new_student_path %>
+<br>
+<br>
+<h3> Import Students from CSV File </h3>
+
+<%= form_tag import_students_path, multipart: true do %>
+
+<%= form_with do |form| %>
+
+  <%= form.label :semester %>
+  <%= form.text_field :semester %>
+
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Students" %>
+
+<% end %>
+
+<br>
+<br>
+
+<p>
+<% @images.each do |semester_images| %>
+  <%= semester_images.id%>
+  <%= link_to 'Show', semester_images %>
+<%end%>
+</p>
+
+
+
+<% end %>
