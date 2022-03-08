@@ -172,6 +172,14 @@ RSpec.describe 'Uploading a csv', type: :feature do
     end
 end
 
+# ---- Uploading image file -----------------
+RSpec.describe 'Uploading an image', type: :feature do
+  it "Uploads image file" do
+    Image.import(file_fixture("P47.jpg"))
+    visit images_path
+    expect(page).to have_content("P47")
+  end
+end
 #
 # COMMAND TO RUN : rspec spec/feature/integration_spec.rb
 
