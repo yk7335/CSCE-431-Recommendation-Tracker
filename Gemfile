@@ -42,7 +42,6 @@ gem 'hirb'
 
 # Rubocop for formatting
 gem 'rubocop', '~> 1.25', require: false
-gem "brakeman"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
