@@ -68,6 +68,10 @@ and save them into your development.rb file
 
 ** Add instructions about how to deploy to Heroku
 
+we created a video to walkthrough how to deploy the app on Heroku. You should have a github account with this code and an Heroku account linked to your email. If you need any help please email yk7335@tamu.edu for any questions. The video walks through creating pipeline and adding apps to test, staging, and production areas. 
+
+The linke is: https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/view?usp=sharing
+
 
 ## CI/CD ##
 
