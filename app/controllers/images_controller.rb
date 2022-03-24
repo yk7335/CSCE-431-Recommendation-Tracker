@@ -57,14 +57,29 @@ class ImagesController < ApplicationController
     end
   end
 
+
+  def import
+    begin
+      params[:files].each do |f|
+        image_hash = Image.new
+        image_hash.uin = (f.original_filename.to_s)[0..-5]
+        image_hash.photo.attach(f)
+        image_hash.save
+      end    
+      redirect_to images_path, notice: "Images Imported Successfully"
+    rescue
+      redirect_to images_path, notice: "No Image uploaded."
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
-      @image = Image.find(params[:id], student_images: [])
+      @image = Image.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:id, student_images: [])
+      params.require(:image).permit(:uin, :photo, :files=>[])
     end
 end

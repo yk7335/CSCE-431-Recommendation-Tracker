@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
+      <th>Uin</th>
+      <th>Photo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +14,8 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.id %></td>
+        <td><%= image.uin %></td>
+        <td><%= image.photo %></td>
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +26,17 @@
 
 <br>
 
-<%= link_to 'New Image', new_image_path %>
+<%#= link_to 'New Image', new_image_path %>
+<%#= link_to 'Students', students_path %>
+
+
+<h3> Import Images </h3>
+<%= form_tag import_images_path, multipart: true do %>
+<%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
+<%= submit_tag "Upload Images" %>
+
+<p>
+<%= link_to 'Students', students_path %>
+</p>
+
+<% end %>

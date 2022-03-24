@@ -1,3 +1,3 @@
 class Image < ApplicationRecord
-    has_many_attached :student_images
+  has_one_attached :photo
 end

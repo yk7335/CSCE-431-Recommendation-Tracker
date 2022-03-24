@@ -52,8 +52,7 @@
 <%= link_to 'New Student', new_student_path %>
 <br>
 <br>
-<h3> Import Students </h3>
-
+<h3> Import Students from CSV File </h3>
 
 <%= form_tag import_students_path, multipart: true do %>
 
@@ -74,13 +73,15 @@
 <br>
 
 <p>
-<% @images.each do |semester_image| %>
-  <%= semester_image.id%>
-  <%= (0...@semester_image.student_images.count).each do |image| %>
-    <div style="width:300px; height:300px;">
-      <%= image_tag(@semester_image.student_images[image], style: 'width:100%; height: auto')%>
-  <%end%>
+<% @images.each do |semester_images| %>
+  <%= semester_images.id%>
+  <%= link_to 'Show', semester_images %>
 <%end%>
 </p>
+
+<p>
+  <%= link_to 'Images', images_path %>
+</p>
+
 
 <% end %>
