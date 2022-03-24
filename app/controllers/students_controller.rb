@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
 
@@ -17,12 +18,10 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
-
   end
 
   # GET /students/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /students or /students.json
   def create
@@ -64,7 +63,7 @@ class StudentsController < ApplicationController
 
   def import
     Student.import(params[:file], params[:year], params[:semester])
-    redirect_to students_path, notice: "Students Imported Successfully"
+    redirect_to students_path, notice: 'Students Imported Successfully'
   end
 
   private
@@ -76,6 +75,7 @@ class StudentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_params
-    params.require(:student).permit(:email, :firstname, :lastname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter, :year, :semester, :image)
+    params.require(:student).permit(:email, :firstname, :lastname, :notes, :uin, :major, :finalgrade, :updatedgrade,
+                                    :classname, :recletter, :year, :semester, :image)
   end
 end

@@ -92,7 +92,8 @@ end
 # ----- Updating a Student with valid input --------
 RSpec.describe 'Updating a student', type: :feature do
   before do
-    student = Student.create(email: "m", email: "m", firstname: "m", lastname: "m", notes: "m", uin: "m", major: "m", finalgrade: "m", updatedgrade: "m", classname: "m", recletter: "m", year: "m", semester: "m")
+    student = Student.create(email: 'm', email: 'm', firstname: 'm', lastname: 'm', notes: 'm', uin: 'm', major: 'm',
+                             finalgrade: 'm', updatedgrade: 'm', classname: 'm', recletter: 'm', year: 'm', semester: 'm')
     visit edit_student_path(student)
   end
 
@@ -128,7 +129,8 @@ end
 # ---- Updating a student with invalid inputs ---
 RSpec.describe 'Updating a student', type: :feature do
   before do
-    student = Student.create(email: "m", email: "m", firstname: "m", lastname: "m", notes: "m", uin: "m", major: "m", finalgrade: "m", updatedgrade: "m", classname: "m", recletter: "m", year: "m", semester: "m")
+    student = Student.create(email: 'm', email: 'm', firstname: 'm', lastname: 'm', notes: 'm', uin: 'm', major: 'm',
+                             finalgrade: 'm', updatedgrade: 'm', classname: 'm', recletter: 'm', year: 'm', semester: 'm')
     visit edit_student_path(student)
   end
 
@@ -153,31 +155,32 @@ end
 # ---- Integration test for deleting a student ----
 RSpec.describe 'Deleting a student', type: :feature do
   before do
-    student = Student.create(email: "m", email: "m", firstname: "m", lastname: "m", notes: "m", uin: "m", major: "m", finalgrade: "m", updatedgrade: "m", classname: "m", recletter: "m", year: "m", semester: "m")
+    student = Student.create(email: 'm', email: 'm', firstname: 'm', lastname: 'm', notes: 'm', uin: 'm', major: 'm',
+                             finalgrade: 'm', updatedgrade: 'm', classname: 'm', recletter: 'm', year: 'm', semester: 'm')
     visit students_path
   end
 
   scenario 'deleting a student' do
     click_on 'Destroy'
-    expect(page).to have_content("successful")
+    expect(page).to have_content('successful')
   end
 end
 
 # ---- Uploading csv with valid file -----------
 RSpec.describe 'Uploading a csv', type: :feature do
-    it "Uploads csv file" do
-      Student.import(file_fixture("test.csv"), "2021", "Fall")
-      visit students_path
-      expect(page).to have_content("Washington")
-    end
+  it 'Uploads csv file' do
+    Student.import(file_fixture('test.csv'), '2021', 'Fall')
+    visit students_path
+    expect(page).to have_content('Washington')
+  end
 end
 
 # ---- Uploading image file -----------------
 RSpec.describe 'Uploading an image', type: :feature do
-  it "Uploads image file" do
-    Image.import(file_fixture("P47.jpg"))
+  it 'Uploads image file' do
+    @image.import(file_fixture('P47.jpg'))
     visit images_path
-    expect(page).to have_content("P47")
+    expect(page).to have_content('P47')
   end
 end
 #
