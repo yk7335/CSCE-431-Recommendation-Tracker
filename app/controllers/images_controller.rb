@@ -59,13 +59,17 @@ class ImagesController < ApplicationController
 
 
   def import
-    params[:files].each do |f|
-      image_hash = Image.new
-      image_hash.uin = (f.original_filename.to_s)[0..-5]
-      image_hash.photo.attach(f)
-      image_hash.save
-    end    
-    redirect_to images_path, notice: "Images Imported Successfully"
+    begin
+      params[:files].each do |f|
+        image_hash = Image.new
+        image_hash.uin = (f.original_filename.to_s)[0..-5]
+        image_hash.photo.attach(f)
+        image_hash.save
+      end    
+      redirect_to images_path, notice: "Images Imported Successfully"
+    rescue
+      redirect_to images_path, notice: "No Image uploaded."
+    end
   end
   
   private

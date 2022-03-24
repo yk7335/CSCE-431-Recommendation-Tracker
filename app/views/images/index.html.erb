@@ -26,11 +26,17 @@
 
 <br>
 
-<%= link_to 'New Image', new_image_path %>
+<%#= link_to 'New Image', new_image_path %>
+<%#= link_to 'Students', students_path %>
+
 
 <h3> Import Images </h3>
 <%= form_tag import_images_path, multipart: true do %>
 <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
 <%= submit_tag "Upload Images" %>
+
+<p>
+<%= link_to 'Students', students_path %>
+</p>
 
 <% end %>
