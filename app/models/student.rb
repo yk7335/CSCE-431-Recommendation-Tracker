@@ -2,24 +2,18 @@
 class Student < ApplicationRecord
   has_one :image
   # csv upload
-  def self.import(file, year, semester, files)
-    # files.each do |f|
-    #   image_hash = Image.new
-    #   # need to access the temprary data and get the (#)+1's uin 
-    #   image_hash.uin = (f.original_filename.to_s)[0..-5]
-    #   image_hash.photo.attach(f)
-    #   image_hash.save
-    #end
+  def self.import(file, year, semester, files, classn)
       i = 0    
       CSV.foreach(file, headers: true) do |row|
+        
+        # create the image instance for each student
         image_hash = Image.new
-        # need to access the temprary data and get the (#)+1's uin 
         image_hash.uin = row[3]
         image_hash.photo.attach(files[i])
         i = i + 1
         image_hash.save
-
-
+        
+        # create the student for each csv entry
         student_hash = Student.new
         student_hash.lastname = row[0]
         student_hash.firstname = row[1]

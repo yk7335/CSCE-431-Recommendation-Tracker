@@ -13,6 +13,19 @@
 
 <h1>Students</h1>
 
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :search %>
+  <%= f.search_field :fullname_or_notes_or_classname_or_uin_or_semester_cont %>
+
+<% end%>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :recletter %>
+  <%= f.search_field :recletter_cont %>
+<% end%>
+
+
 
 <table>
   <thead>
@@ -74,6 +87,9 @@
 
   <%= form.label :year %>
   <%= form.text_field :year %>
+
+  <%= form.label :class %>
+  <%= form.text_field :classn %>
 
   <%= file_field_tag :file %>
   <%# <%= submit_tag "Upload Students" %> %>

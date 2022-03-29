@@ -4,7 +4,8 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    @q = Student.ransack(params[:q])
+    @students = @q.result
     @images = Image.all
 
     if params[:search_by_firstname] && params[:search_by_firstname] != ""
@@ -77,7 +78,7 @@ class StudentsController < ApplicationController
   def import
       @Images = Image.all
     #begin
-      Student.import(params[:file], params[:year], params[:semester], params[:files])
+      Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
     #rescue
       redirect_to students_path, notice: "No file added"
     #end
@@ -92,6 +93,6 @@ class StudentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_params
-    params.require(:student).permit(:email, :firstname, :lastname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter, :year, :semester, :image)
+    params.require(:student).permit(:email, :firstname, :lastname, :fullname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter, :year, :semester, :image)
   end
 end
