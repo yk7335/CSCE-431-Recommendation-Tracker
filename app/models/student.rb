@@ -2,25 +2,34 @@
 class Student < ApplicationRecord
   has_one :image
   # csv upload
-  def self.import(file, year, semester, classn)
+  def self.import(file, year, semester, files, classn)
+      i = 0    
       CSV.foreach(file, headers: true) do |row|
-          student_hash = Student.new
-          student_hash.lastname = row[0]
-          student_hash.firstname = row[1]
-          student_hash.fullname = student_hash.firstname+" "+student_hash.lastname
-          student_hash.uin = row[3]
-          student_hash.email = row[5]
-          student_hash.classname = classn
-          student_hash.notes = "THIS IS TESTING"
-          student_hash.major = row[9]
-          student_hash.finalgrade = row[14]
-          student_hash.updatedgrade = row[15]
-          student_hash.recletter = "undecided"
-          student_hash.semester = semester.to_s
-          student_hash.year = year
-          student_hash.save
+        
+        # create the image instance for each student
+        image_hash = Image.new
+        image_hash.uin = row[3]
+        image_hash.photo.attach(files[i])
+        i = i + 1
+        image_hash.save
+        
+        # create the student for each csv entry
+        student_hash = Student.new
+        student_hash.lastname = row[0]
+        student_hash.firstname = row[1]
+        student_hash.uin = row[3]
+        student_hash.email = row[5]
+        student_hash.classname = row[7]
+        student_hash.notes = row[8]
+        student_hash.major = row[9]
+        student_hash.finalgrade = row[14]
+        student_hash.updatedgrade = row[15]
+        student_hash.recletter = "undecided"
+        student_hash.semester = semester.to_s
+        student_hash.year = year
+        student_hash.save
       end
-      
+      #redirect_to students_path, notice: "Students Imported Successfully"
   end
 
   #validates :email, presence: true

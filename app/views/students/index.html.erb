@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_tag "/students", method: "GET" do %>
+  <%= label_tag :search_by_firstname %>
+  <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
+  <%= label_tag :search_by_lastname %>
+  <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
+  <%= label_tag :search_by_recletter %>
+  <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
 <h1>Students</h1>
 
 <%= search_form_for @q do |f| %>
@@ -81,7 +92,12 @@
   <%= form.text_field :classn %>
 
   <%= file_field_tag :file %>
-  <%= submit_tag "Upload Students" %>
+  <%# <%= submit_tag "Upload Students" %> %>
+
+  <h3> Import Images </h3>
+  <%# <%= form_tag import_images_path, multipart: true do %> %>
+  <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
+  <%= submit_tag "Upload Images" %>
 
 <% end %>
 

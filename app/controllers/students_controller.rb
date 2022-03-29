@@ -7,6 +7,19 @@ class StudentsController < ApplicationController
     @q = Student.ransack(params[:q])
     @students = @q.result
     @images = Image.all
+
+    if params[:search_by_firstname] && params[:search_by_firstname] != ""
+      @students = @students.where("firstname ~* ?", 
+      params[:search_by_firstname])
+    end
+    if params[:search_by_lastname] && params[:search_by_lastname] != ""
+      @students = @students.where("lastname ~* ?", 
+      params[:search_by_lastname])
+    end
+   if params[:search_by_recletter] && params[:search_by_recletter] != ""
+      @students = @students.where("recletter ~* ?", 
+      params[:search_by_recletter] )
+    end
   end
 
   # GET /students/1 or /students/1.json
@@ -18,7 +31,6 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
-
   end
 
   # GET /students/1/edit
@@ -64,12 +76,12 @@ class StudentsController < ApplicationController
   end
 
   def import
-    begin
-      Student.import(params[:file], params[:year], params[:semester], params[:classn])
-      redirect_to students_path, notice: "Students Imported Successfully"
-    # rescue
-    #   redirect_to students_path, notice: "No file added"
-    end
+      @Images = Image.all
+    #begin
+      Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
+    #rescue
+      redirect_to students_path, notice: "No file added"
+    #end
   end
 
   private
