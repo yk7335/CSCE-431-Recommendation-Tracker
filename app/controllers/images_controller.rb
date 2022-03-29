@@ -4,19 +4,23 @@ class ImagesController < ApplicationController
   # GET /images or /images.json
   def index
     @images = Image.all
+    @students = Student.all
   end
 
   # GET /images/1 or /images/1.json
   def show
+    @students = Student.all
   end
 
   # GET /images/new
   def new
     @image = Image.new
+    @students = Student.all
   end
 
   # GET /images/1/edit
   def edit
+    @students = Student.all
   end
 
   # POST /images or /images.json
@@ -50,7 +54,6 @@ class ImagesController < ApplicationController
   # DELETE /images/1 or /images/1.json
   def destroy
     @image.destroy
-
     respond_to do |format|
       format.html { redirect_to images_url, notice: "Image was successfully destroyed." }
       format.json { head :no_content }
@@ -62,7 +65,8 @@ class ImagesController < ApplicationController
     begin
       params[:files].each do |f|
         image_hash = Image.new
-        image_hash.uin = (f.original_filename.to_s)[0..-5]
+        # need to access the temprary data and get the (#)+1's uin 
+        image_hash.uin = (f.original_filename.to_s)[0..-9]
         image_hash.photo.attach(f)
         image_hash.save
       end    

@@ -39,4 +39,55 @@
 <%= link_to 'Students', students_path %>
 </p>
 
+<p> break---------------------------- </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th>Year</th>
+      <th>Email</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Notes</th>
+      <th>Uin</th>
+      <th>Major</th>
+      <th>Finalgrade</th>
+      <th>Updatedgrade</th>
+      <th>Classname</th>
+      <th>Recletter</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.semester%></td>
+        <td><%= student.year %></td>
+        <td><%= student.email %></td>
+        <td><%= student.firstname %></td>
+        <td><%= student.lastname %></td>
+        <td><%= student.notes %></td>
+        <td><%= student.uin %></td>
+        <td><%= student.major %></td>
+        <td><%= student.finalgrade %></td>
+        <td><%= student.updatedgrade %></td>
+        <td><%= student.classname %></td>
+        <td><%= student.recletter %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
 <% end %>
