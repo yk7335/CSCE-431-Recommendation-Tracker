@@ -1,17 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_tag "/students", method: "GET" do %>
-  <%= label_tag :search_by_firstname %>
-  <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
-  <%= label_tag :search_by_lastname %>
-  <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
-  <%= label_tag :search_by_recletter %>
-  <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-
-
 <br>
 <h3> Import Students from CSV File </h3>
 
@@ -44,6 +32,16 @@
 <p>
   <%= link_to 'Classes', courses_path %>
 </p>
+
+<%= form_tag "/students", method: "GET" do %>
+  <%= label_tag :search_by_firstname %>
+  <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
+  <%= label_tag :search_by_lastname %>
+  <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
+  <%= label_tag :search_by_recletter %>
+  <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
+  <%= submit_tag "Search" %>
+<% end %>
 
 <h1>Students</h1>
 
