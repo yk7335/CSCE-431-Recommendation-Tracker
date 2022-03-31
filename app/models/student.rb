@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Student < ApplicationRecord
   has_one :image
+  has_many :course
   # csv upload
   def self.import(file, year, semester, files, classn)
       i = 0    

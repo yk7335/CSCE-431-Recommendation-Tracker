@@ -77,11 +77,12 @@ class StudentsController < ApplicationController
 
   def import
       @Images = Image.all
-    #begin
+    begin
       Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
-    #rescue
+      redirect_to students_path, notice: "Students Imported Successfully"
+    rescue
       redirect_to students_path, notice: "No file added"
-    #end
+    end
   end
 
   private

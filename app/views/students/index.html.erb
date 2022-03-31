@@ -11,20 +11,43 @@
 <% end %>
 
 
+
+<br>
+<h3> Import Students from CSV File </h3>
+
+<%= form_tag import_students_path, multipart: true do %>
+
+<%= form_with do |form| %>
+
+  <%= form.label :semester %>
+  <%= form.text_field :semester %>
+
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+
+  <%= form.label :class %>
+  <%= form.text_field :classn %>
+
+  <%= file_field_tag :file %>
+
+  <h3> Import Images </h3>
+  <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
+  <%= submit_tag "Upload Student Data" %>
+
+<% end %>
+
+<br>
+
+<p>
+  <%= link_to 'Images', images_path %>
+</p>
+<p>
+  <%= link_to 'Classes', courses_path %>
+</p>
+
 <h1>Students</h1>
 
-<%= search_form_for @q do |f| %>
-
-  <%= f.label :search %>
-  <%= f.search_field :fullname_or_notes_or_classname_or_uin_or_semester_cont %>
-
-<% end%>
-
-<%= search_form_for @q do |f| %>
-  <%= f.label :recletter %>
-  <%= f.search_field :recletter_cont %>
-<% end%>
-
+<% end %>
 
 
 <table>
@@ -71,49 +94,9 @@
 
 <br>
 
-
-
 <%= link_to 'New Student', new_student_path %>
-<br>
-<br>
-<h3> Import Students from CSV File </h3>
-
-<%= form_tag import_students_path, multipart: true do %>
-
-<%= form_with do |form| %>
-
-  <%= form.label :semester %>
-  <%= form.text_field :semester %>
-
-  <%= form.label :year %>
-  <%= form.text_field :year %>
-
-  <%= form.label :class %>
-  <%= form.text_field :classn %>
-
-  <%= file_field_tag :file %>
-  <%# <%= submit_tag "Upload Students" %> %>
-
-  <h3> Import Images </h3>
-  <%# <%= form_tag import_images_path, multipart: true do %> %>
-  <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
-  <%= submit_tag "Upload Images" %>
-
-<% end %>
 
 <br>
-<br>
-
-<p>
-<% @images.each do |semester_images| %>
-  <%= semester_images.id%>
-  <%= link_to 'Show', semester_images %>
-<%end%>
-</p>
-
-<p>
-  <%= link_to 'Images', images_path %>
-</p>
 
 
-<% end %>
+
