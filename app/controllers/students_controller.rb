@@ -4,8 +4,22 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    @q = Student.ransack(params[:q])
+    @students = @q.result
     @images = Image.all
+
+    if params[:search_by_firstname] && params[:search_by_firstname] != ""
+      @students = @students.where("firstname ~* ?", 
+      params[:search_by_firstname])
+    end
+    if params[:search_by_lastname] && params[:search_by_lastname] != ""
+      @students = @students.where("lastname ~* ?", 
+      params[:search_by_lastname])
+    end
+   if params[:search_by_recletter] && params[:search_by_recletter] != ""
+      @students = @students.where("recletter ~* ?", 
+      params[:search_by_recletter] )
+    end
   end
 
   # GET /students/1 or /students/1.json
@@ -17,7 +31,6 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
-
   end
 
   # GET /students/1/edit
@@ -63,8 +76,10 @@ class StudentsController < ApplicationController
   end
 
   def import
+      @Images = Image.all
     begin
-      Student.import(params[:file], params[:year], params[:semester])
+      Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
+      redirect_to students_path, notice: "Students Imported Successfully"
     rescue
       redirect_to students_path, notice: "No file added"
     end
@@ -79,6 +94,6 @@ class StudentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_params
-    params.require(:student).permit(:email, :firstname, :lastname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter, :year, :semester, :image)
+    params.require(:student).permit(:email, :firstname, :lastname, :fullname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter, :year, :semester, :image)
   end
 end

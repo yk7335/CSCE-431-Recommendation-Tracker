@@ -1,6 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<br>
+<h3> Import Students from CSV File </h3>
+
+<%= form_tag import_students_path, multipart: true do %>
+
+<%= form_with do |form| %>
+
+  <%= form.label :semester %>
+  <%= form.text_field :semester %>
+
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+
+  <%= form.label :class %>
+  <%= form.text_field :classn %>
+
+  <%= file_field_tag :file %>
+
+  <h3> Import Images </h3>
+  <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
+  <%= submit_tag "Upload Student Data" %>
+
+<% end %>
+
+<br>
+
+<p>
+  <%= link_to 'Images', images_path %>
+</p>
+<p>
+  <%= link_to 'Classes', courses_path %>
+</p>
+
+<%= form_tag "/students", method: "GET" do %>
+  <%= label_tag :search_by_firstname %>
+  <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
+  <%= label_tag :search_by_lastname %>
+  <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
+  <%= label_tag :search_by_recletter %>
+  <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<h1>Students</h1>
+
+<% end %>
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <p id="notice"><%= notice %></p>
+
 
 <style>
 body {
@@ -105,41 +156,10 @@ nav{
 
 <br>
 
-
-
 <%= link_to 'New Student', new_student_path %>
-<br>
-<br>
-<h3> Import Students from CSV File </h3>
-
-<%= form_tag import_students_path, multipart: true do %>
-
-<%= form_with do |form| %>
-
-  <%= form.label :semester %>
-  <%= form.text_field :semester %>
-
-  <%= form.label :year %>
-  <%= form.text_field :year %>
-
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload Students" %>
-
-<% end %>
 
 <br>
-<br>
 
-<p>
-<% @images.each do |semester_images| %>
-  <%= semester_images.id%>
-  <%= link_to 'Show', semester_images %>
-<%end%>
-</p>
-
-<p>
-  <%= link_to 'Images', images_path %>
-</p>
 
 
 <% end %>
