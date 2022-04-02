@@ -25,7 +25,7 @@ table {
   margin-top: 5%;
 }
 tr:nth-child(odd) {
-  background-color: #ab4e52;
+  background-color: #F5D5CB;
 }
 nav{
   background-color: #450012;
@@ -33,6 +33,14 @@ nav{
 .navbar .navbar-nav .nav-link:hover {
   background-color: #450012;
   color: #fff;
+}
+.sort{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-style: solid;
+  border-color: #450012;
+  background-color: white;
 }
 </style>
 
@@ -70,13 +78,13 @@ nav{
 <%= form_with do |form| %>
 
   <%= form.label :semester %>
-  <%= form.text_field :semester %>
+  <%= form.select :semester, ['Fall', 'Spring', 'Summer']%>
 
   <%= form.label :year %>
   <%= form.text_field :year %>
 
   <%= form.label :class %>
-  <%= form.text_field :classn %>
+  <%= form.text_field :classname %>
 
   <%= file_field_tag :file %>
 
@@ -84,6 +92,9 @@ nav{
   <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
   <%= submit_tag "Upload Student Data" %>
 
+ 
+
+  <% end %>
 <% end %>
 
 <br>
@@ -95,20 +106,36 @@ nav{
   <%= link_to 'Classes', courses_path %>
 </p>
 
-<%= form_tag "/students", method: "GET" do %>
-  <%= label_tag :search_by_firstname %>
-  <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
-  <%= label_tag :search_by_lastname %>
-  <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
-  <%= label_tag :search_by_recletter %>
-  <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
-  <%= submit_tag "Search" %>
-<% end %>
 
 
-<% end %>
-
+<%# start of body %>
 <body>
+
+<div class="sort">
+<h2 style="text-align: center; margin-top: 2%; font-size:2vw; margin-bottom: 2%; color:#450012" class="text-uppercase"> Filter Students </h2>
+<%= form_tag "/students", method: "GET" do %>
+
+<table style="border:1px solid; border-color: #450012;" class="center">
+  <thead>
+    <tr style="background-color: white; ">
+      <th><%= label_tag :search_by_firstname, "First Name" %> </th>
+      <th><%= label_tag :search_by_lastname , "Last Name"%> </th>
+      <th><%= label_tag :search_by_recletter, "Recommendation Letter" %></th>
+    </tr>
+  </thead>
+    <tr>
+      <td><%= text_field_tag :search_by_firstname, params[:search_by_firstname] %> </td>
+      <td><%= text_field_tag :search_by_lastname, params[:search_by_lastname] %></td>
+      <td><%= text_field_tag :search_by_recletter, params[:search_by_recletter] %></td>
+    </tr>
+</table>
+<div style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 2%; margin-top: 2%">
+  <%= submit_tag "Search" %>
+</div>
+<% end %>
+</div>
+
+
 <table style="border:1px solid; border-color: #450012;" class="center">
   <thead>
     <tr style="background-color: white; ">
