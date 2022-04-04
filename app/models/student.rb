@@ -5,6 +5,29 @@ class Student < ApplicationRecord
   # csv upload
   def self.import(file, year, semester, files, classn)
       i = 0    
+      # sort images
+
+      # create course if not already created?
+      check = false
+      if @Courses != nil
+        logger.info "\n\n HERE1 \n\n"
+        @Courses.each do |course| 
+          if @course.classname == classn && @course.semester == semester && @course.year == year  
+            check = true
+            logger.info "\n\n HERE2 \n\n"
+
+          end 
+        end
+      end
+      
+      if !check
+        course_hash = Course.new
+        course_hash.classname = classn
+        course_hash.semester = semester
+        course_hash.year = year
+        course_hash.save
+      end
+
       CSV.foreach(file, headers: true) do |row|
         
         # create the image instance for each student
@@ -20,7 +43,7 @@ class Student < ApplicationRecord
         student_hash.firstname = row[1]
         student_hash.uin = row[3]
         student_hash.email = row[5]
-        student_hash.classname = row[7]
+        student_hash.classname = classn
         student_hash.notes = row[8]
         student_hash.major = row[9]
         student_hash.finalgrade = row[14]

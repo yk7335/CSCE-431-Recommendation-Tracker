@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
-
+  skip_before_action :verify_authenticity_token, only:[:import]
   # GET /students or /students.json
   def index
     @q = Student.ransack(params[:q])
@@ -15,14 +15,14 @@ class StudentsController < ApplicationController
     if params[:search_by_lastname] && params[:search_by_lastname] != ""
       @students = @students.where("lastname ~* ?", 
       params[:search_by_lastname])
-    end
-   if params[:search_by_recletter] && params[:search_by_recletter] != ""
-      @students = @students.where("recletter ~* ?", 
-      params[:search_by_recletter] )
+    end 
+   if params[:search_by_recletter] && params[:search_by_recletter] != "" 
+      @students = @students.where("recletter ~* ?",  
+      params[:search_by_recletter] ) 
     end
   end
 
-  # GET /students/1 or /students/1.json
+  # GET /students/1 or /students/1.json 
   def show
     @students = Student.all
     @Images = Image.all
@@ -77,12 +77,13 @@ class StudentsController < ApplicationController
 
   def import
       @Images = Image.all
-    begin
+      @Courses = Course.all
+    # begin
       Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
       redirect_to students_path, notice: "Students Imported Successfully"
-    rescue
-      redirect_to students_path, notice: "No file added"
-    end
+    # rescue
+      # redirect_to students_path, notice: "No file added"
+    # end
   end
 
   private

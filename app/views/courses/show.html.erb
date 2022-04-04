@@ -35,7 +35,7 @@
   </thead>
 
   <tbody>
-    <% @students.where(classname: @course.classname).find_each do |student| %>
+    <% @students.where(classname: @course.classname, semester: @course.semester, year: @course.year).find_each do |student| %>
       <tr>
         <td><%= student.email %></td>
         <td><%= student.firstname %></td>
