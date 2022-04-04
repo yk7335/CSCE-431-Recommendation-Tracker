@@ -1,3 +1,67 @@
-<h1>Welcome</h1>
-<h2>Log into CSCE Recommendation Tracker.</h2>
-<%= link_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path %>
+<html>
+
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+.login{
+    margin-top:10%;
+    margin-bottom:10%;
+    margin-left:auto;
+    margin-right: auto;
+    background-color:white;
+    text-align:center;
+    width:20%;
+    height:80%;
+    border-style: solid;
+    border-color: #450012;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+.google{
+    padding-top:10%;
+    padding-bottom:10%;
+    font-size:1vw;
+}
+body{
+    background-color:#ebe8df;
+    font-family: 'Montserrat'
+}
+
+footer {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	background-color: #450012;
+	color: white;
+	text-align: center;
+}
+.title{
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+</style>
+
+</head>
+
+
+<body>
+<div class="title">
+    <h1 style="text-align:center; font-size:4vw; padding-top:5%;color:#450012" class="text-uppercase">Recommendation Tracker </h1>
+    <h4 style="text-align:center; font-size:2vw;color:#450012"> for Dr. Lightfoot</h4>
+
+</div>
+<div class="login">
+    <h3 style="color:#450012; padding-top:3%; font-size:2vw">Login</h3>
+    <div class="google">
+        <%= link_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path %>
+    </div>
+</div>
+
+<footer>
+	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+</footer>
+
+</body>
+
+</html>

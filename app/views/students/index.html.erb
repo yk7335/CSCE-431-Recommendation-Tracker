@@ -7,7 +7,7 @@
 body {
   margin:0;
   padding-top: 70px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat';
   background-color: #ebe8df;
 }
 .center {
@@ -41,6 +41,8 @@ nav{
   border-style: solid;
   border-color: #450012;
   background-color: white;
+  overflow-x:auto;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 </style>
 
@@ -58,8 +60,11 @@ nav{
         <li class="nav-item">
           <%= link_to 'Images', images_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <%= link_to "Help Page", help_students_path, class: 'nav-link' %>
+        </li>  
+        <li class="nav-item ms-auto">
+          <%= link_to "Sign Out", destroy_admin_session_path, class: 'nav-link' %>
         </li>  
       </ul>
     </div>
@@ -67,8 +72,10 @@ nav{
 </nav>
 
 
-<h1 style="text-align: center; margin-top: 5%; font-size:5vw; margin-bottom: 5%; color:#450012 " class="text-uppercase">Students</h1>
-
+<div class="title">
+    <h1 style="text-align:center; font-size:4vw; padding-top:5%;color:#450012" class="text-uppercase">Students Page</h1>
+    <h4 style="text-align:center; font-size:2vw;color:#450012">View and search the list of students below</h4>
+</div>
 
 
 <h3> Import Students from CSV File </h3>
@@ -112,7 +119,8 @@ nav{
 <body>
 
 <div class="sort">
-<h2 style="text-align: center; margin-top: 2%; font-size:2vw; margin-bottom: 2%; color:#450012" class="text-uppercase"> Filter Students </h2>
+<h2 style="text-align: center; margin-top: 2%; font-size:2vw; color:#450012"> Filter Students </h2>
+<h2 style="text-align: center; margin-top: 2%; font-size:1vw; margin-bottom: 2%; color:#450012"> Enter parameters below to filter students </h2>
 <%= form_tag "/students", method: "GET" do %>
 
 <table style="border:1px solid; border-color: #450012;" class="center">
