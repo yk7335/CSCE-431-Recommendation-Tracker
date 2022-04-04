@@ -1,0 +1,93 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uin</th>
+      <th>Photo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.uin %></td>
+        <td><%= image.photo %></td>
+        <td><%= link_to 'Show', image %></td>
+        <td><%= link_to 'Edit', edit_image_path(image) %></td>
+        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Image', new_image_path %>
+<%#= link_to 'Students', students_path %>
+
+
+<h3> Import Images </h3>
+<%= form_tag import_images_path, multipart: true do %>
+<%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
+<%= submit_tag "Upload Images" %>
+
+<p>
+<%= link_to 'Students', students_path %>
+</p>
+
+<p> break---------------------------- </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th>Year</th>
+      <th>Email</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Notes</th>
+      <th>Uin</th>
+      <th>Major</th>
+      <th>Finalgrade</th>
+      <th>Updatedgrade</th>
+      <th>Classname</th>
+      <th>Recletter</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.semester%></td>
+        <td><%= student.year %></td>
+        <td><%= student.email %></td>
+        <td><%= student.firstname %></td>
+        <td><%= student.lastname %></td>
+        <td><%= student.notes %></td>
+        <td><%= student.uin %></td>
+        <td><%= student.major %></td>
+        <td><%= student.finalgrade %></td>
+        <td><%= student.updatedgrade %></td>
+        <td><%= student.classname %></td>
+        <td><%= student.recletter %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<% end %>

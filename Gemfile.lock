@@ -63,6 +63,22 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.563.0)
+    aws-sdk-core (3.128.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.55.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.113.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.4.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.10.3)
@@ -123,6 +139,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.0)
     jwt (2.3.0)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -135,6 +152,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.4)
@@ -208,6 +226,10 @@ GEM
       thor (~> 1.0)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (2.6.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -311,6 +333,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
@@ -318,12 +341,14 @@ DEPENDENCIES
   hirb
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick (~> 4.8)
   omniauth
   omniauth-google-oauth2
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.4)
+  ransack (~> 2.6)
   rexml
   rspec-rails
   rubocop (~> 1.25)

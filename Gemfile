@@ -31,6 +31,7 @@ gem 'omniauth-google-oauth2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'mini_magick', '~> 4.8'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -70,3 +71,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem "aws-sdk-s3", require: false
+gem "ransack", "~> 2.6"
