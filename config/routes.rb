@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   end
   
   get '/students/help' => 'students#help', as: :help
+  get '/students/upload' => 'students#upload', as: :upload
   resources :students
 
   resources :students do
     get 'help', on: :collection
+    get 'upload', on: :collection
   end
 
   resources :students do 

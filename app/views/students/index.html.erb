@@ -6,7 +6,6 @@
 <style>
 body {
   margin:0;
-  padding-top: 70px;
   font-family: 'Montserrat';
   background-color: #ebe8df;
 }
@@ -14,10 +13,10 @@ h1{
   font-size: 100px;
 }
 h2{
-  font-size: 40px;
+  font-size: 30px;
 }
 h3{
-  font-size: 30px;
+  font-size: 40px;
 }
 h4{
   font-size: 20px;
@@ -50,6 +49,7 @@ nav{
   padding-top: 3%;
   padding-bottom: 1%;
   color:#450012;
+  
 }
 
 .main-body {
@@ -130,55 +130,19 @@ nav{
 </nav>
 
 
-<div class="container">
-    <h1 style="text-align:center;  padding-top:5%;color:#450012" class="text-uppercase">Students Page</h1>
+  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;">
+    <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
     <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
-</div>
-
-
-<h3> Import Students from CSV File </h3>
-
-<%= form_tag import_students_path, multipart: true do %>
-
-<%= form_with do |form| %>
-
-  <%= form.label :semester %>
-  <%= form.select :semester, ['Fall', 'Spring', 'Summer']%>
-
-  <%= form.label :year %>
-  <%= form.text_field :year %>
-
-  <%= form.label :class %>
-  <%= form.text_field :classname %>
-
-  <%= file_field_tag :file %>
-
-  <h3> Import Images </h3>
-  <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
-  <%= submit_tag "Upload Student Data" %>
-
- 
-
-  <% end %>
-<% end %>
-
-<br>
-
-<p>
-  <%= link_to 'Images', images_path %>
-</p>
-<p>
-  <%= link_to 'Classes', courses_path %>
-</p>
+  </div>
 
 
 
-<%# start of body %>
+
 <body>
 
 <div class="container">
   <h2 style="text-align: center; margin-top: 2%;  color:#450012"> Filter Students </h2>
-  <h3 style="text-align: center; margin-bottom: 2%; color:#450012"> Enter parameters below to filter students </h3>
+  <h4 style="text-align: center; margin-bottom: 1%; color:#450012"> Enter parameters below to filter students </h4>
 </div>
 
 <%= form_tag "/students", method: "GET" do %>
@@ -217,8 +181,11 @@ nav{
 </div>
 <% end %>
 
-<div class="new-student">
-  <%= link_to 'Add a new student', new_student_path %>
+<div class="new-student container">
+    <p style="font-size: 20px;">
+      <%= link_to 'Upload file of students', upload_students_path %> or
+      <%= link_to 'Add a new student', new_student_path %> 
+    </p>
 </div>
 
 <table style="border:1px solid; border-color: #450012;" class="center">
