@@ -2,6 +2,7 @@
 
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
+  helper_method :favor
   # skip_before_action :verify_authenticity_token, only: [:import]
 
   # GET /students or /students.json
@@ -80,12 +81,30 @@ class StudentsController < ApplicationController
   def import
     @Images = Image.all
     @Courses = Course.all
-    begin
-      Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
-      redirect_to students_path, notice: 'Students Imported Successfully'
-    rescue
-      redirect_to students_path, notice: "No file added"
-    end
+    #begin
+    Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
+    redirect_to students_path, notice: 'Students Imported Successfully'
+    #rescue
+      #redirect_to students_path, notice: "No file added"
+    #end
+  end
+
+  def favor
+    favorite_hash = Favorite.new
+    favorite_hash.lastname = student.lastname
+    favorite_hash.firstname = student.firstname
+    favorite_hash.uin = student.uin
+    favorite_hash.email = student.email
+    favorite_hash.classname = student.classname
+    favorite_hash.notes =  student.notes
+    favorite_hash.major = student.major
+    favorite_hash.finalgrade =  student.finalgrade
+    favorite_hash.updatedgrade = student.updatedgrade
+    favorite_hash.recletter = student.recletter
+    favorite_hash.semester = student.semester
+    favorite_hash.year = student.year
+    favorite_hash.save
+    redirect_to favorites_path, notice: 'Student was favorited.'
   end
 
   private
