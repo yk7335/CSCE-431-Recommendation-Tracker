@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
@@ -87,6 +88,12 @@ class StudentsController < ApplicationController
       #redirect_to students_path, notice: "No file added"
     #end
   end
+  
+  def help
+  end
+
+  def upload
+  end
 
   private
 
@@ -101,3 +108,4 @@ class StudentsController < ApplicationController
                                     :updatedgrade, :classname, :recletter, :year, :semester, :image)
   end
 end
+
