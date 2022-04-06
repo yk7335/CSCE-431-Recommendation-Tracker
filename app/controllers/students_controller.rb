@@ -2,7 +2,8 @@
 
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
-  skip_before_action :verify_authenticity_token, only: [:import]
+  # skip_before_action :verify_authenticity_token, only: [:import]
+  
   # GET /students or /students.json
   def index
     @q = Student.ransack(params[:q])
