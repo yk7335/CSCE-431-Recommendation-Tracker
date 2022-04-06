@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Favorites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lastname</th>
+      <th>Firstname</th>
+      <th>Uin</th>
+      <th>Email</th>
+      <th>Classname</th>
+      <th>Notes</th>
+      <th>Major</th>
+      <th>Finalgrade</th>
+      <th>Updatedgrade</th>
+      <th>Recletter</th>
+      <th>Semester</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.lastname %></td>
+        <td><%= favorite.firstname %></td>
+        <td><%= favorite.uin %></td>
+        <td><%= favorite.email %></td>
+        <td><%= favorite.classname %></td>
+        <td><%= favorite.notes %></td>
+        <td><%= favorite.major %></td>
+        <td><%= favorite.finalgrade %></td>
+        <td><%= favorite.updatedgrade %></td>
+        <td><%= favorite.recletter %></td>
+        <td><%= favorite.semester %></td>
+        <td><%= favorite.year %></td>
+        <td><%= link_to 'Show', favorite %></td>
+        <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
+        <td><%= link_to 'Destroy', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Favorite', new_favorite_path %>
