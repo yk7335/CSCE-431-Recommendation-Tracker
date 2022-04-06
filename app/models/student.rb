@@ -3,6 +3,19 @@
 class Student < ApplicationRecord
   has_one :image
   has_many :course
+  # validates :email, presence: true
+  # validates :firstname, presence: true
+  # validates :lastname, presence: true
+  # validates :notes, presence: true
+  # validates :uin, presence: true
+  # validates :major, presence: true
+  # validates :finalgrade, presence: true
+  # validates :updatedgrade, presence: true
+  # validates :classname, presence: true
+  # validates :recletter, presence: true
+  # validates :semester, presence: true
+  # validates :year, presence: true
+  
   # csv upload
   def self.import(file, year, semester, files, classn)
     i = 0
@@ -55,16 +68,21 @@ class Student < ApplicationRecord
     # redirect_to students_path, notice: "Students Imported Successfully"
   end
 
-  # validates :email, presence: true
-  # validates :firstname, presence: true
-  # validates :lastname, presence: true
-  # validates :notes, presence: true
-  # validates :uin, presence: true
-  # validates :major, presence: true
-  # validates :finalgrade, presence: true
-  # validates :updatedgrade, presence: true
-  # validates :classname, presence: true
-  # validates :recletter, presence: true
-  # validates :semester, presence: true
-  # validates :year, presence: true
+  
+  # def favor
+  #   favorite_hash.lastname = lastname
+  #   favorite_hash.firstname = student.firstname
+  #   favorite_hash.uin = student.uin
+  #   favorite_hash.email = student.email
+  #   favorite_hash.classname = student.classname
+  #   favorite_hash.notes =  student.notes
+  #   favorite_hash.major = student.major
+  #   favorite_hash.finalgrade =  student.finalgrade
+  #   favorite_hash.updatedgrade = student.updatedgrade
+  #   favorite_hash.recletter = student.recletter
+  #   favorite_hash.semester = student.semester
+  #   favorite_hash.year = student.year
+  #   favorite_hash.save
+    # redirect_to favorites_path, notice: 'Student was favorited.'
+  # end
 end
