@@ -1,28 +1,29 @@
 # frozen_string_literal: true
+
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
-  skip_before_action :verify_authenticity_token, only:[:import]
+  skip_before_action :verify_authenticity_token, only: [:import]
   # GET /students or /students.json
   def index
     @q = Student.ransack(params[:q])
     @students = @q.result
     @images = Image.all
 
-    if params[:search_by_firstname] && params[:search_by_firstname] != ""
-      @students = @students.where("firstname ~* ?", 
-      params[:search_by_firstname])
+    if params[:search_by_firstname] && params[:search_by_firstname] != ''
+      @students = @students.where('firstname ~* ?',
+                                  params[:search_by_firstname])
     end
-    if params[:search_by_lastname] && params[:search_by_lastname] != ""
-      @students = @students.where("lastname ~* ?", 
-      params[:search_by_lastname])
-    end 
-   if params[:search_by_recletter] && params[:search_by_recletter] != "" 
-      @students = @students.where("recletter ~* ?",  
-      params[:search_by_recletter] ) 
+    if params[:search_by_lastname] && params[:search_by_lastname] != ''
+      @students = @students.where('lastname ~* ?',
+                                  params[:search_by_lastname])
+    end
+    if params[:search_by_recletter] && params[:search_by_recletter] != ''
+      @students = @students.where('recletter ~* ?',
+                                  params[:search_by_recletter])
     end
   end
 
-  # GET /students/1 or /students/1.json 
+  # GET /students/1 or /students/1.json
   def show
     @students = Student.all
     @Images = Image.all
@@ -68,7 +69,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1 or /students/1.json
   def destroy
     @student.destroy
-
+     
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
@@ -76,13 +77,13 @@ class StudentsController < ApplicationController
   end
 
   def import
-      @Images = Image.all
-      @Courses = Course.all
+    @Images = Image.all
+    @Courses = Course.all
     # begin
-      Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
-      redirect_to students_path, notice: "Students Imported Successfully"
+    Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
+    redirect_to students_path, notice: 'Students Imported Successfully'
     # rescue
-      # redirect_to students_path, notice: "No file added"
+    # redirect_to students_path, notice: "No file added"
     # end
   end
 
@@ -95,6 +96,7 @@ class StudentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_params
-    params.require(:student).permit(:email, :firstname, :lastname, :fullname, :notes, :uin, :major, :finalgrade, :updatedgrade, :classname, :recletter, :year, :semester, :image)
+    params.require(:student).permit(:email, :firstname, :lastname, :fullname, :notes, :uin, :major, :finalgrade,
+                                    :updatedgrade, :classname, :recletter, :year, :semester, :image)
   end
 end
