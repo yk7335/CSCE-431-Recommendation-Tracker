@@ -3,7 +3,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
   # skip_before_action :verify_authenticity_token, only: [:import]
-  
+
   # GET /students or /students.json
   def index
     @q = Student.ransack(params[:q])
@@ -80,12 +80,12 @@ class StudentsController < ApplicationController
   def import
     @Images = Image.all
     @Courses = Course.all
-    # begin
-    Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
-    redirect_to students_path, notice: 'Students Imported Successfully'
-    # rescue
-    # redirect_to students_path, notice: "No file added"
-    # end
+    begin
+      Student.import(params[:file], params[:year], params[:semester], params[:files], params[:classn])
+      redirect_to students_path, notice: 'Students Imported Successfully'
+    rescue
+      redirect_to students_path, notice: "No file added"
+    end
   end
 
   private

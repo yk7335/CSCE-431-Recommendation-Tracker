@@ -10,10 +10,10 @@ class Student < ApplicationRecord
 
     # create course if not already created?
     check = false
-    if Course.all.count < 1
+    if Course.all.count >= 1
       logger.info "\n\n HERE1 \n\n"
-      @Courses.each do |_course|
-        if @course.classname == classn && @course.semester == semester && @course.year == year
+      Course.all.each do |course|
+        if course.classname == classn && course.semester == semester && course.year == year
           check = true
           logger.info "\n\n HERE2 \n\n"
         end

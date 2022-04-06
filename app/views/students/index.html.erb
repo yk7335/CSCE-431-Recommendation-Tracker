@@ -17,7 +17,7 @@
   <%= form.text_field :classn %>
 
   <%= file_field_tag :file %>
-
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <h3> Import Images </h3>
   <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
   <%= submit_tag "Upload Student Data" %>
@@ -159,7 +159,3 @@ nav{
 <%= link_to 'New Student', new_student_path %>
 
 <br>
-<<<<<<< HEAD
-=======
-
->>>>>>> 8efe99f022f5a06574df716af113b8695b883c46
