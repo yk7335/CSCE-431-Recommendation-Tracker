@@ -1,0 +1,77 @@
+<%= form_with(model: favorite) do |form| %>
+  <% if favorite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(favorite.errors.count, "error") %> prohibited this favorite from being saved:</h2>
+
+      <ul>
+        <% favorite.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uin %>
+    <%= form.text_field :uin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :classname %>
+    <%= form.text_field :classname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :major %>
+    <%= form.text_field :major %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finalgrade %>
+    <%= form.text_field :finalgrade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :updatedgrade %>
+    <%= form.text_field :updatedgrade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recletter %>
+    <%= form.text_field :recletter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.text_field :semester %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_field :year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
