@@ -38,6 +38,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @Images = Image.all
   end
 
   # POST /students or /students.json

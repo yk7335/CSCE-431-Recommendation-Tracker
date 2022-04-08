@@ -60,7 +60,7 @@ nav{
         <li class="nav-item">
           <%= link_to 'Courses', courses_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <%= link_to 'Images', images_path, class: 'nav-link' %>
         </li>
         <li class="nav-item ">
@@ -86,7 +86,7 @@ nav{
   <thead>
     <tr style="background-color: white; ">
       <th>UIN</th>
-      <th colspan="2">Actions</th>
+      <th colspan="2" style="width:50%">Actions</th>
     </tr>
   </thead>
 
@@ -94,8 +94,8 @@ nav{
     <% @images.each do |image| %>
       <tr>
         <td><%= image.uin %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= button_to "delete", image, :method => "delete", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', image, class: "btn buttonTo" %></td>
+        <td><%= button_to "Delete", image, :method => "delete", :class => "btn buttonTo" %></td>
       </tr>
     <% end %>
   </tbody>
