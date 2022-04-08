@@ -1,53 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<br>
-<h3> Import Students from CSV File </h3>
-
-<%= form_tag import_students_path, multipart: true do %>
-
-<%= form_with do |form| %>
-
-  <%= form.label :semester %>
-  <%= form.text_field :semester %>
-
-  <%= form.label :year %>
-  <%= form.text_field :year %>
-
-  <%= form.label :class %>
-  <%= form.text_field :classn %>
-
-  <%= file_field_tag :file %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <h3> Import Images </h3>
-  <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
-  <%= submit_tag "Upload Student Data" %>
-
-<% end %>
-
-<br>
-
-<p>
-  <%= link_to 'Images', images_path %>
-</p>
-<p>
-  <%= link_to 'Classes', courses_path %>
-</p>
-
-<%= form_tag "/students", method: "GET" do %>
-  <%= label_tag :search_by_firstname %>
-  <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
-  <%= label_tag :search_by_lastname %>
-  <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
-  <%= label_tag :search_by_recletter %>
-  <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<h1>Students</h1>
-
-<% end %>
-
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <p id="notice"><%= notice %></p>
@@ -56,14 +6,25 @@
 <style>
 body {
   margin:0;
-  padding-top: 70px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat';
   background-color: #ebe8df;
+}
+h1{
+  font-size: 100px;
+}
+h2{
+  font-size: 30px;
+}
+h3{
+  font-size: 40px;
+}
+h4{
+  font-size: 20px;
 }
 .center {
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  width:100%;
   text-align:center;
 }
 th {
@@ -71,11 +32,8 @@ th {
   color:white;
   
 }
-table {
-  margin-top: 5%;
-}
 tr:nth-child(odd) {
-  background-color: #ab4e52;
+  background-color: #F5D5CB;
 }
 nav{
   background-color: #450012;
@@ -83,6 +41,66 @@ nav{
 .navbar .navbar-nav .nav-link:hover {
   background-color: #450012;
   color: #fff;
+}
+.new-student{
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  padding-top: 3%;
+  padding-bottom: 1%;
+  color:#450012;
+  
+}
+
+.main-body {
+  padding: 15px;
+  text-align:center;
+    
+}
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #450012;
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 2rem;
+}
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+.h-100 {
+  height: 100%!important;
+}
+.shadow-none {
+  box-shadow: none!important;
 }
 </style>
 
@@ -95,13 +113,16 @@ nav{
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Students</a>
+          <%= link_to 'Students', students_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Images</a>
+          <%= link_to 'Images', images_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help page</a>
+        <li class="nav-item ">
+          <%= link_to "Help Page", help_students_path, class: 'nav-link' %>
+        </li>  
+        <li class="nav-item ms-auto">
+          <%= link_to "Sign Out", destroy_admin_session_path, class: 'nav-link' %>
         </li>  
       </ul>
     </div>
@@ -109,8 +130,63 @@ nav{
 </nav>
 
 
-<h1 style="text-align: center; margin-top: 5%; font-size:5vw; margin-bottom: 5%; color:#450012 " class="text-uppercase">Students</h1>
+  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;">
+    <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
+    <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
+  </div>
 
+
+
+
+<body>
+
+<div class="container">
+  <h2 style="text-align: center; margin-top: 2%;  color:#450012"> Filter Students </h2>
+  <h4 style="text-align: center; margin-bottom: 1%; color:#450012"> Enter parameters below to filter students </h4>
+</div>
+
+<%= form_tag "/students", method: "GET" do %>
+<div class="container">
+    <div class="main-body">
+          <div class="row">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <h6 class="mb-0">First Name</h6>
+                    <div style="float:right" class="col text-secondary"> 
+                      <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <h6 class="mb-0">Last Name</h6>
+                    <div class="col text-secondary">
+                      <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <h6 class="mb-0">Rec Letter</h6>
+                    <div class="col text-secondary">
+                      <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+<div style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 2%">
+  <%= submit_tag "Search" %>
+</div>
+<% end %>
+
+<div class="new-student container">
+    <p style="font-size: 20px;">
+      <%= link_to 'Upload file of students', upload_students_path %> or
+      <%= link_to 'Add a new student', new_student_path %> 
+    </p>
+</div>
 
 <table style="border:1px solid; border-color: #450012;" class="center">
   <thead>
@@ -127,7 +203,7 @@ nav{
       <th>Updatedgrade</th>
       <th>Classname</th>
       <th>Recletter</th>
-      <th colspan="4">Actions</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -149,7 +225,7 @@ nav{
         <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "delete", student, :method => "delete" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -157,6 +233,8 @@ nav{
 
 <br>
 
-<%= link_to 'New Student', new_student_path %>
+
 
 <br>
+
+</body>

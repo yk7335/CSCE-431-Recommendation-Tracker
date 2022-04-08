@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
@@ -87,6 +88,12 @@ class StudentsController < ApplicationController
       #redirect_to students_path, notice: "No file added"
     #end
   end
+  
+  def help
+  end
+
+  def upload
+  end
 
   def favor
     Student.favor(params[:lastname], params[:firstname], params[:uin], params[:email], params[:classname], params[:notes], params[:major], params[:finalgrade], params[:updatedgrade], params[:recletter], params[:semester], params[:year])
@@ -106,3 +113,4 @@ class StudentsController < ApplicationController
                                     :updatedgrade, :classname, :recletter, :year, :semester, :image, :student)
   end
 end
+
