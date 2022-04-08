@@ -111,6 +111,8 @@ nav{
 </nav>
 
 <body>
+<div class="main">
+
     <h1> Import Students from CSV File </h1>
     <h2> Select appropriate CSV file and images before uploading</h2>
     
@@ -139,7 +141,7 @@ nav{
                                         <div class="row">
                                             <h6 class="mb-0">Class</h6>
                                             <div class="col text-secondary">
-                                                <%= form.text_field :classname %>
+                                                <%= form.text_field :classn %>
                                             </div>
                                         </div>
                                         <hr>
@@ -147,6 +149,8 @@ nav{
                                             <h6 class="mb-0">Select CSV</h6>
                                             <div class="col text-secondary">
                                                 <%= file_field_tag :file %>
+                                                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
                                             </div>
                                         </div>
                                         <hr>
@@ -170,37 +174,11 @@ nav{
                     </div>
                 </div>
             </div>
-
-    <%# <%= form_tag import_students_path, multipart: true do %> %>
-
-        <%# <%= form_with do |form| %> %>
-
-            <%# <%= form.label :semester %> %>
-            <%# <%= form.select :semester, ['Fall', 'Spring', 'Summer']%> %>
-
-            <%# <%= form.label :year %> %>
-            <%# <%= form.text_field :year %> %>
-
-            <%# <%= form.label :class %> %>
-            <%# <%= form.text_field :classname %> %>
-<%#  %>
-            <%# <%= file_field_tag :file %> %>
-
-            <%# <h3> Import Images </h3> %>
-            <%# <%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%> %>
-            <%# <%= submit_tag "Upload Student Data" %> %>
-
-        <%# <% end %> %>
-    <%# <% end %> %>
-
     <br>
-
-    <p>
-    <%= link_to 'Images', images_path %>
-    </p>
-    <p>
-    <%= link_to 'Classes', courses_path %>
-    </p>
+    </div>
+    <div class="footer">
+      <p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+    </div>
 </body>
 
 </html>

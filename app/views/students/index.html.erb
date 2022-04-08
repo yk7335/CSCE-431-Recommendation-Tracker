@@ -8,6 +8,7 @@ body {
   margin:0;
   font-family: 'Montserrat';
   background-color: #ebe8df;
+  padding-bottom:0;
 }
 h1{
   font-size: 100px;
@@ -116,6 +117,9 @@ nav{
           <%= link_to 'Students', students_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
+          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Images', images_path, class: 'nav-link' %>
         </li>
         <li class="nav-item ">
@@ -130,18 +134,20 @@ nav{
 </nav>
 
 
-  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;">
-    <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
-    <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
-  </div>
 
 
 
 
 <body>
 
+
+<div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+  <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
+  <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
+</div>
+
 <div class="container">
-  <h2 style="text-align: center; margin-top: 2%;  color:#450012"> Filter Students </h2>
+  <h2 style="text-align: center;  color:#450012"> Filter Students </h2>
   <h4 style="text-align: center; margin-bottom: 1%; color:#450012"> Enter parameters below to filter students </h4>
 </div>
 
@@ -188,7 +194,7 @@ nav{
     </p>
 </div>
 
-<table style="border:1px solid; border-color: #450012;" class="center">
+<table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
   <thead>
     <tr style="background-color: white; ">
       <th>Semester</th>
@@ -224,18 +230,16 @@ nav{
         <td><%= student.recletter %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= button_to "delete", student, :method => "delete" %></td>
+        <td><%= button_to "delete", student, :method => "delete", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<div class="footer">
+	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+</div>
 
-
-
-<br>
 
 </body>
 
