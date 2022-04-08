@@ -8,6 +8,7 @@ body {
   margin:0;
   font-family: 'Montserrat';
   background-color: #ebe8df;
+  padding-bottom:0;
 }
 h1{
   font-size: 100px;
@@ -105,15 +106,16 @@ nav{
 </style>
 
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark">
-  <div class="container-fluid">
     <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
           <%= link_to 'Students', students_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Images', images_path, class: 'nav-link' %>
@@ -126,22 +128,23 @@ nav{
         </li>  
       </ul>
     </div>
-  </div>
 </nav>
 
 
-  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;">
-    <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
-    <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
-  </div>
 
 
 
 
 <body>
 
+
+<div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+  <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
+  <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
+</div>
+
 <div class="container">
-  <h2 style="text-align: center; margin-top: 2%;  color:#450012"> Filter Students </h2>
+  <h2 style="text-align: center;  color:#450012"> Filter Students </h2>
   <h4 style="text-align: center; margin-bottom: 1%; color:#450012"> Enter parameters below to filter students </h4>
 </div>
 
@@ -177,64 +180,63 @@ nav{
         </div>
     </div>
 <div style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 2%">
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", class: "btn buttonTo" %>
 </div>
 <% end %>
 
 <div class="new-student container">
     <p style="font-size: 20px;">
-      <%= link_to 'Upload file of students', upload_students_path %> or
-      <%= link_to 'Add a new student', new_student_path %> 
+      <%= link_to 'Upload file of students', upload_students_path, class: "btn buttonTo" %> or
+      <%= link_to 'Add a new student', new_student_path, class: "btn buttonTo" %> 
     </p>
 </div>
-
-<table style="border:1px solid; border-color: #450012;" class="center">
-  <thead>
-    <tr style="background-color: white; ">
-      <th>Semester</th>
-      <th>Year</th>
-      <th>Email</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Notes</th>
-      <th>Uin</th>
-      <th>Major</th>
-      <th>Finalgrade</th>
-      <th>Updatedgrade</th>
-      <th>Classname</th>
-      <th>Recletter</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.semester%></td>
-        <td><%= student.year %></td>
-        <td><%= student.email %></td>
-        <td><%= student.firstname %></td>
-        <td><%= student.lastname %></td>
-        <td><%= student.notes %></td>
-        <td><%= student.uin %></td>
-        <td><%= student.major %></td>
-        <td><%= student.finalgrade %></td>
-        <td><%= student.updatedgrade %></td>
-        <td><%= student.classname %></td>
-        <td><%= student.recletter %></td>
-        <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= button_to "delete", student, :method => "delete" %></td>
+<div style="overflow-x:auto;">
+  <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
+    <thead>
+      <tr style="background-color: white; ">
+        <th>Semester</th>
+        <th>Year</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Notes</th>
+        <th>Uin</th>
+        <th>Major</th>
+        <th>Finalgrade</th>
+        <th>Updatedgrade</th>
+        <th>Classname</th>
+        <th>Recletter</th>
+        <th colspan="3">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.semester%></td>
+          <td><%= student.year %></td>
+          <td><%= student.email %></td>
+          <td><%= student.firstname %></td>
+          <td><%= student.lastname %></td>
+          <td><%= student.notes %></td>
+          <td><%= student.uin %></td>
+          <td><%= student.major %></td>
+          <td><%= student.finalgrade %></td>
+          <td><%= student.updatedgrade %></td>
+          <td><%= student.classname %></td>
+          <td><%= student.recletter %></td>
+          <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
+          <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
+          <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
+          <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>
+        </tr>
+      <% end %> 
+    </tbody>
 </table>
+</div>
+<div class="footer">
+	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+</div>
 
-<br>
-
-
-
-<br>
 
 </body>

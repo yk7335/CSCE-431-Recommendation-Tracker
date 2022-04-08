@@ -69,7 +69,7 @@ class Student < ApplicationRecord
     end
     # redirect_to students_path, notice: "Students Imported Successfully"
   end
-
+  
   def self.favor(lastname, firstname, uin, email, classname, notes, major, finalgrade, updatedgrade, recletter, semester, year)
     favorite_hash = Favorite.new
     favorite_hash.lastname =  lastname

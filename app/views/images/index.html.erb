@@ -1,14 +1,27 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <p id="notice"><%= notice %></p>
 
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <style>
 body {
   margin:0;
-  padding-top: 70px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat';
   background-color: #ebe8df;
+  min-height:100%;
+}
+h1{
+  font-size: 100px;
+}
+h2{
+  font-size: 30px;
+}
+h3{
+  font-size: 40px;
+}
+h4{
+  font-size: 20px;
 }
 .center {
   margin-left: auto;
@@ -21,11 +34,8 @@ th {
   color:white;
   
 }
-table {
-  margin-top: 5%;
-}
 tr:nth-child(odd) {
-  background-color: #ab4e52;
+  background-color: #F5D5CB;
 }
 nav{
   background-color: #450012;
@@ -35,7 +45,7 @@ nav{
   color: #fff;
 }
 </style>
-
+</head>
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark">
   <div class="container-fluid">
     <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
@@ -48,25 +58,35 @@ nav{
           <%= link_to 'Students', students_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
+          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
           <%= link_to 'Images', images_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <%= link_to "Help Page", help_students_path, class: 'nav-link' %>
+        </li>  
+        <li class="nav-item ms-auto">
+          <%= link_to "Sign Out", destroy_admin_session_path, class: 'nav-link' %>
         </li>  
       </ul>
     </div>
   </div>
 </nav>
 
-<h1 style="text-align: center; margin-top: 5%; font-size:5vw; margin-bottom: 5%; color:#450012 " class="text-uppercase">Images</h1>
 
+<body>
+<div class="main">
+  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+    <h1 style="text-align:center; color:#450012" class="text-uppercase">Images Page</h1>
+    <h3 style="text-align:center; color:#450012">View uploaded images</h3>
+  </div>
 
-<table style="border:1px solid; border-color: #450012;" class="center">
+<table style="border:1px solid; border-color: #450012; width:30%" class="center">
   <thead>
     <tr style="background-color: white; ">
-      <th>Uin</th>
-      <th>Photo</th>
-      <th colspan="3"></th>
+      <th>UIN</th>
+      <th colspan="2" style="width:50%">Actions</th>
     </tr>
   </thead>
 
@@ -74,80 +94,17 @@ nav{
     <% @images.each do |image| %>
       <tr>
         <td><%= image.uin %></td>
-        <td><%= image.photo %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', image, class: "btn buttonTo" %></td>
+        <td><%= button_to "Delete", image, :method => "delete", :class => "btn buttonTo" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+</div>
+<div class="footer">
+	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+</div>
 
-<%#= link_to 'New Image', new_image_path %>
-<%#= link_to 'Students', students_path %>
-
-
-<h3> Import Images </h3>
-<%= form_tag import_images_path, multipart: true do %>
-<%= file_field_tag :files, multiple: true, accept:"jpg/png", name: 'files[]'%>
-<%= submit_tag "Upload Images" %>
-
-<p>
-<%= link_to 'Students', students_path %>
-</p>
-
-<p> break---------------------------- </p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Semester</th>
-      <th>Year</th>
-      <th>Email</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Notes</th>
-      <th>Uin</th>
-      <th>Major</th>
-      <th>Finalgrade</th>
-      <th>Updatedgrade</th>
-      <th>Classname</th>
-      <th>Recletter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.semester%></td>
-        <td><%= student.year %></td>
-        <td><%= student.email %></td>
-        <td><%= student.firstname %></td>
-        <td><%= student.lastname %></td>
-        <td><%= student.notes %></td>
-        <td><%= student.uin %></td>
-        <td><%= student.major %></td>
-        <td><%= student.finalgrade %></td>
-        <td><%= student.updatedgrade %></td>
-        <td><%= student.classname %></td>
-        <td><%= student.recletter %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-<% end %>
+</body>
