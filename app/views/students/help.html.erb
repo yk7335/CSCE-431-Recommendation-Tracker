@@ -2,30 +2,24 @@
 
 <p id="notice"><%= notice %></p>
 
-
+<head>
 <style>
 body {
   margin:0;
-  padding-top: 70px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat';
   background-color: #ebe8df;
 }
-.center {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  text-align:center;
+h1{
+  font-size: 100px;
 }
-th {
-  background: #450012;
-  color:white;
-  
+h2{
+  font-size: 30px;
 }
-table {
-  margin-top: 5%;
+h3{
+  font-size: 40px;
 }
-tr:nth-child(odd) {
-  background-color: #ab4e52;
+h4{
+  font-size: 20px;
 }
 nav{
   background-color: #450012;
@@ -36,6 +30,7 @@ nav{
 }
 </style>
 
+</head>
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark">
   <div class="container-fluid">
     <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
@@ -48,12 +43,32 @@ nav{
           <%= link_to 'Students', students_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Images', images_path, class: 'nav-link' %>
+          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
+          <%= link_to 'Images', images_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item ">
           <%= link_to "Help Page", help_students_path, class: 'nav-link' %>
+        </li>  
+        <li class="nav-item ms-auto">
+          <%= link_to "Sign Out", destroy_admin_session_path, class: 'nav-link' %>
         </li>  
       </ul>
     </div>
   </div>
 </nav>
+
+<body>
+<div class="main">
+
+  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+    <h1 style="text-align:center; color:#450012" class="text-uppercase">Help Page</h1>
+    <h3 style="text-align:center; color:#450012">View content below for help</h3>
+  </div>
+</div>
+<div class="footer">
+	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+</div>
+
+</body>

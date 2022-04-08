@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,6 +98,8 @@ nav{
 </nav>
 
   <body>
+  <div class="main">
+
     <%= form_with(model: student) do |form| %>
       <% if student.errors.any? %>
         <div id="error_explanation">
@@ -264,12 +264,13 @@ nav{
         </div>
       <% end %>
 
-
-
+    </div>
+    <div class="footer">
+      <p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+    </div>
 
   </body>
   </html>
 
-  
-
+ 
 <%= link_to 'Students', students_path %>

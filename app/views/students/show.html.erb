@@ -87,7 +87,7 @@ nav{
   </div>
 </nav>
 <body>
-
+<div class="main">
 <% @Images.each do |image| %>
   <% if @student.uin == image.uin  %>
     <%= image_tag(image.photo) %>
@@ -220,6 +220,11 @@ nav{
         </div>
     </div>
     
+    </div>
+    <div class="footer">
+      <p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+    </div>
+
+
 </body>
 </html>
-
