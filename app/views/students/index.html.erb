@@ -127,7 +127,7 @@ nav{
       <th>Updatedgrade</th>
       <th>Classname</th>
       <th>Recletter</th>
-      <th colspan="3">Actions</th>
+      <th colspan="4">Actions</th>
     </tr>
   </thead>
 
@@ -146,7 +146,7 @@ nav{
         <td><%= student.updatedgrade %></td>
         <td><%= student.classname %></td>
         <td><%= student.recletter %></td>
-        <%# <td><%= button_to 'Favorite', favor %></td> %>
+        <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

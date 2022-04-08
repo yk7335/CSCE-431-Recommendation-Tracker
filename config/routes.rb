@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  
   resources :favorites
+
   resources :courses
   resources :images
   # root 'students#index'
@@ -14,6 +16,12 @@ Rails.application.routes.draw do
   
   resources :students do 
     collection { post :import }
+  end
+
+  resource :students do 
+    member do
+      post :favor
+    end
   end
 
   resources :images do 

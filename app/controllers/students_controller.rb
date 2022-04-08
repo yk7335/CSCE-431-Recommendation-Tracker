@@ -88,6 +88,11 @@ class StudentsController < ApplicationController
     #end
   end
 
+  def favor
+    Student.favor(params[:lastname], params[:firstname], params[:uin], params[:email], params[:classname], params[:notes], params[:major], params[:finalgrade], params[:updatedgrade], params[:recletter], params[:semester], params[:year])
+    redirect_to students_path, notice: 'Student Favorited'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -98,6 +103,6 @@ class StudentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def student_params
     params.require(:student).permit(:email, :firstname, :lastname, :fullname, :notes, :uin, :major, :finalgrade,
-                                    :updatedgrade, :classname, :recletter, :year, :semester, :image)
+                                    :updatedgrade, :classname, :recletter, :year, :semester, :image, :student)
   end
 end
