@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
   end
-  
+
   get '/students/help' => 'students#help', as: :help
   get '/students/upload' => 'students#upload', as: :upload
   resources :students
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get 'help', on: :collection
     get 'upload', on: :collection
   end
-
+  
   resources :students do 
     collection { post :import }
   end
@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   end
   
   resources :users
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -250,8 +250,14 @@ nav{
                         </div>
                         <div class="col-sm-9 text-secondary">
                           <div class="field">
-                            <%= form.text_field :updatedgrade %>
-                            <%= form.text_field :finalgrade %>
+                            <div class="field">
+                            <%= form.label :Updated %>
+                            <%= form.text_field :updatedgrade%>
+                            </div>
+                            <div class="field">
+                              <%= form.label :Final %>
+                              <%= form.text_field :finalgrade %>
+                            </div>
                           </div>
                         </div>
                       </div>
