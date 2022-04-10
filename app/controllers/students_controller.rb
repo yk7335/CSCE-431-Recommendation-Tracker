@@ -34,6 +34,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    @Images = Image.all
   end
 
   # GET /students/1/edit
