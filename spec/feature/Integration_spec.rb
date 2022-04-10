@@ -39,31 +39,29 @@ RSpec.describe 'Creating a student', type: :feature do
 
   scenario 'valid inputs' do
     visit new_student_path
-    fill_in 'Email', with: 'mihiranpandey@gmail.com'
-    fill_in 'Firstname', with: 'mihiran'
-    fill_in 'Lastname', with: 'pandey'
-    fill_in 'Notes', with: 'is cool'
-    fill_in 'Uin', with: '0000001'
-    fill_in 'Major', with: 'cs'
-    fill_in 'Finalgrade', with: '100.0'
-    fill_in 'Updatedgrade', with: '99.9'
-    fill_in 'Classname', with: 'cs315'
-    fill_in 'Recletter', with: 'yes'
-    fill_in 'Semester', with: 'fall'
-    fill_in 'Year', with: '2021'
+    fill_in 'student_email', with: 'mihiranpandey@gmail.com'
+    fill_in 'student_firstname', with: 'mihiran'
+    fill_in 'student_lastname', with: 'pandey'
+    fill_in 'student_notes', with: 'is cool'
+    fill_in 'student_uin', with: '0000001'
+    fill_in 'student_finalgrade', with: 'A'
+    fill_in 'student_updatedgrade', with: 'B'
+    fill_in 'student_classname', with: 'cs315'
+    select "YES", :from => "student_recletter"
+    select "Fall", :from => "student_semester"
+    fill_in 'student_year', with: '2021'
     click_on 'Create Student'
     visit students_path
     expect(page).to have_content('mihiranpandey@gmail.com')
     expect(page).to have_content('mihiran')
     expect(page).to have_content('pandey')
     expect(page).to have_content('is cool')
-    expect(page).to have_content('cs')
-    expect(page).to have_content('100.0')
-    expect(page).to have_content('99.9')
+    expect(page).to have_content('A')
+    expect(page).to have_content('B')
     expect(page).to have_content('0000001')
     expect(page).to have_content('cs315')
-    expect(page).to have_content('yes')
-    expect(page).to have_content('fall')
+    expect(page).to have_content('YES')
+    expect(page).to have_content('Fall')
     expect(page).to have_content('2021')
   end
 end
@@ -72,18 +70,17 @@ end
 RSpec.describe 'Creating a student', type: :feature do
   scenario 'invalid inputs' do
     visit new_student_path
-    fill_in 'Email', with: ''
-    fill_in 'Firstname', with: ''
-    fill_in 'Lastname', with: ''
-    fill_in 'Notes', with: 'is cool'
-    fill_in 'Uin', with: '0000001'
-    fill_in 'Major', with: 14
-    fill_in 'Finalgrade', with: '100.0'
-    fill_in 'Updatedgrade', with: '99.9'
-    fill_in 'Classname', with: 'cs315'
-    fill_in 'Recletter', with: 'yes'
-    fill_in 'Semester', with: 'fall'
-    fill_in 'Year', with: '2021'
+    fill_in 'student_email', with: ''
+    fill_in 'student_firstname', with: ''
+    fill_in 'student_lastname', with: ''
+    fill_in 'student_notes', with: 'is cool'
+    fill_in 'student_uin', with: '0000001'
+    fill_in 'student_finalgrade', with: 'A'
+    fill_in 'student_updatedgrade', with: 'B'
+    fill_in 'student_classname', with: 'cs315'
+    select "YES", :from => "student_recletter"
+    select "Fall", :from => "student_semester"
+    fill_in 'student_year', with: '2021'
     click_on 'Create Student'
     expect(page).to have_content("can't be blank")
   end
@@ -97,30 +94,27 @@ RSpec.describe 'Updating a student', type: :feature do
   end
 
   scenario 'valid inputs' do
-    fill_in 'Email', with: 'mihiranpandey@gmail.com'
-    fill_in 'Firstname', with: 'mihiran'
-    fill_in 'Lastname', with: 'pandey'
-    fill_in 'Notes', with: 'is cool'
-    fill_in 'Uin', with: '0000001'
-    fill_in 'Major', with: 'cs'
-    fill_in 'Finalgrade', with: '100.0'
-    fill_in 'Updatedgrade', with: '99.9'
-    fill_in 'Classname', with: 'cs315'
-    fill_in 'Recletter', with: 'yes'
-    fill_in 'Semester', with: 'fall'
-    fill_in 'Year', with: '2021'
+    fill_in 'student_email', with: 'mihiranpandey@gmail.com'
+    fill_in 'student_firstname', with: 'mihiran'
+    fill_in 'student_lastname', with: 'pandey'
+    fill_in 'student_notes', with: 'is cool'
+    fill_in 'student_uin', with: '0000001'
+    fill_in 'student_finalgrade', with: 'A'
+    fill_in 'student_updatedgrade', with: 'B'
+    fill_in 'student_classname', with: 'cs315'
+    select "YES", :from => "student_recletter"
+    select "Fall", :from => "student_semester"
+    fill_in 'student_year', with: '2021'
     click_on 'Update Student'
     expect(page).to have_content('mihiranpandey@gmail.com')
     expect(page).to have_content('mihiran')
     expect(page).to have_content('pandey')
     expect(page).to have_content('is cool')
-    expect(page).to have_content('cs')
-    expect(page).to have_content('100.0')
-    expect(page).to have_content('99.9')
+    expect(page).to have_content('A')
     expect(page).to have_content('0000001')
     expect(page).to have_content('cs315')
-    expect(page).to have_content('yes')
-    expect(page).to have_content('fall')
+    expect(page).to have_content('YES')
+    expect(page).to have_content('Fall')
     expect(page).to have_content('2021')
   end
 end
@@ -132,19 +126,18 @@ RSpec.describe 'Updating a student', type: :feature do
     visit edit_student_path(student)
   end
 
-  scenario 'valid inputs' do
-    fill_in 'Email', with: ''
-    fill_in 'Firstname', with: ''
-    fill_in 'Lastname', with: ''
-    fill_in 'Notes', with: ''
-    fill_in 'Uin', with: ''
-    fill_in 'Major', with: ''
-    fill_in 'Finalgrade', with: ''
-    fill_in 'Updatedgrade', with: ''
-    fill_in 'Classname', with: ''
-    fill_in 'Recletter', with: ''
-    fill_in 'Semester', with: ''
-    fill_in 'Year', with: ''
+  scenario 'invalid inputs' do
+    fill_in 'student_email', with: ''
+    fill_in 'student_firstname', with: ''
+    fill_in 'student_lastname', with: ''
+    fill_in 'student_notes', with: 'is cool'
+    fill_in 'student_uin', with: '0000001'
+    fill_in 'student_finalgrade', with: 'A'
+    fill_in 'student_updatedgrade', with: 'B'
+    fill_in 'student_classname', with: 'cs315'
+    select "YES", :from => "student_recletter"
+    select "Fall", :from => "student_semester"
+    fill_in 'student_year', with: '2021'
     click_on 'Update Student'
     expect(page).to have_content("can't be blank")
   end
@@ -158,19 +151,38 @@ RSpec.describe 'Deleting a student', type: :feature do
   end
 
   scenario 'deleting a student' do
-    click_on 'Destroy'
-    expect(page).to have_content("successful")
+    click_on 'Delete'
+    expect(page).to have_content("Students")
   end
 end
 
 # ---- Uploading csv with valid file -----------
-RSpec.describe 'Uploading a csv', type: :feature do
+RSpec.describe 'Uploading a csv and images', type: :feature do
     it "Uploads csv file" do
-      Student.import(file_fixture("test.csv"), "2021", "Fall")
+      Student.import(file_fixture("test.csv"), "2021", "Fall", [File.open(Rails.root.join(file_fixture("pfp.jpg")))], "CS315")
+      Student.import(file_fixture("test.csv"), "2021", "Fall", [File.open(Rails.root.join(file_fixture("pfp.jpg")))], "CS315")
       visit students_path
       expect(page).to have_content("Washington")
+      visit courses_path
+      expect(page).to have_content("CS315")
     end
 end
+
+# ---- Favoriting students -----------
+RSpec.describe 'Uploading a csv and images', type: :feature do
+  before "Favorites student" do
+    student = Student.create(email: "m", email: "m", firstname: "m", lastname: "m", notes: "m", uin: "m", major: "m", finalgrade: "m", updatedgrade: "m", classname: "m", recletter: "m", year: "m", semester: "m")
+    visit students_path
+  end
+
+  scenario 'favoriting new student' do
+    click_on 'Favorite'
+    visit favorites_path
+    expect(page).to have_content('m')
+  end
+end
+
+
 
 #
 # COMMAND TO RUN : rspec spec/feature/integration_spec.rb

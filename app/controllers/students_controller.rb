@@ -44,6 +44,7 @@ class StudentsController < ApplicationController
 
   # POST /students or /students.json
   def create
+    @Images = Image.all
     @student = Student.new(student_params)
 
     respond_to do |format|
@@ -59,6 +60,7 @@ class StudentsController < ApplicationController
 
   # PATCH/PUT /students/1 or /students/1.json
   def update
+    @Images = Image.all
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to student_url(@student), notice: 'Student was successfully updated.' }
@@ -72,6 +74,7 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1 or /students/1.json
   def destroy
+    @Images = Image.all
     @student.destroy
      
     respond_to do |format|

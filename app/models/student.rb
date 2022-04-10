@@ -5,18 +5,17 @@ class Student < ApplicationRecord
   has_many :course
   has_many :favorite
 
-  # validates :email, presence: true
-  # validates :firstname, presence: true
-  # validates :lastname, presence: true
-  # validates :notes, presence: true
-  # validates :uin, presence: true
-  # validates :major, presence: true
-  # validates :finalgrade, presence: true
-  # validates :updatedgrade, presence: true
-  # validates :classname, presence: true
-  # validates :recletter, presence: true
-  # validates :semester, presence: true
-  # validates :year, presence: true
+  validates :email, presence: true
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :notes, presence: true
+  validates :uin, presence: true
+  validates :finalgrade, presence: true
+  validates :updatedgrade, presence: true
+  validates :classname, presence: true
+  validates :recletter, presence: true
+  validates :semester, presence: true
+  validates :year, presence: true
   
   # csv upload
   def self.import(file, year, semester, files, classn)
@@ -47,7 +46,7 @@ class Student < ApplicationRecord
       # create the image instance for each student
       image_hash = Image.new
       image_hash.uin = row[3]
-      image_hash.photo.attach(files[i])
+      # image_hash.photo.attach(files[i])
       i += 1
       image_hash.save
 
