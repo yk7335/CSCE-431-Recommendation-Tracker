@@ -86,6 +86,8 @@ class Student < ApplicationRecord
       favorite_hash.semester = semester
       favorite_hash.year = year
       favorite_hash.save
+    else
+      Favorite.all.find_by(uin: uin).destroy
     end
   end
 

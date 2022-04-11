@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Favorites</h1>
-<%# Student.all.where(uin :favorite.uin, classname :favorite.classname).find(1) %>
 <table>
   <thead>
     <tr>
@@ -23,7 +22,7 @@
           <td><%= student.email %></td>
           <td><%= student.classname %></td>
           <td><%= link_to 'Show', student %></td>
-          <td><%= link_to 'Edit', edit_favorite_path(student) %></td>
+          <td><%= link_to 'Edit', edit_student_path(student) %></td>
         </tr>
       <% end %>
     <% end %>
