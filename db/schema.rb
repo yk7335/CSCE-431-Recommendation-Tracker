@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_06_230019) do
+ActiveRecord::Schema.define(version: 2022_04_06_211900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,31 @@ ActiveRecord::Schema.define(version: 2022_03_06_230019) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "classname"
+    t.string "semester"
+    t.string "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "lastname"
+    t.string "firstname"
+    t.string "uin"
+    t.string "email"
+    t.string "classname"
+    t.string "notes"
+    t.string "major"
+    t.string "finalgrade"
+    t.string "updatedgrade"
+    t.string "recletter"
+    t.string "semester"
+    t.string "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "uin"
     t.string "photo"
@@ -64,13 +89,15 @@ ActiveRecord::Schema.define(version: 2022_03_06_230019) do
     t.string "email"
     t.string "firstname"
     t.string "lastname"
-    t.string "notes"
+    t.string "fullname"
+    t.text "notes"
     t.string "uin"
     t.string "major"
     t.string "finalgrade"
     t.string "updatedgrade"
     t.string "classname"
     t.string "recletter"
+    t.text "reason"
     t.string "semester"
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false

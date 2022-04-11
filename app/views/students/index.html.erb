@@ -1,84 +1,254 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Students</h1>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+body {
+  margin:0;
+  font-family: 'Montserrat';
+  background-color: #ebe8df;
+  padding-bottom:0;
+}
+h1{
+  font-size: 100px;
+}
+h2{
+  font-size: 30px;
+}
+h3{
+  font-size: 40px;
+}
+h4{
+  font-size: 20px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width:100%;
+  text-align:center;
+}
+th {
+  background: #450012;
+  color:white;
+  
+}
+tr:nth-child(odd) {
+  background-color: #F5D5CB;
+}
+nav{
+  background-color: #450012;
+}
+.navbar .navbar-nav .nav-link:hover {
+  background-color: #450012;
+  color: #fff;
+}
+.new-student{
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  padding-top: 3%;
+  padding-bottom: 1%;
+  color:#450012;
+  
+}
+
+.main-body {
+  padding: 15px;
+  text-align:center;
+    
+}
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #450012;
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 2rem;
+}
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+.h-100 {
+  height: 100%!important;
+}
+.shadow-none {
+  box-shadow: none!important;
+}
+</style>
+</head>
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark">
+    <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to 'Students', students_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Favorites', favorites_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Images', images_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item ">
+          <%= link_to "Help Page", help_students_path, class: 'nav-link' %>
+        </li>  
+        <li class="nav-item ms-auto">
+          <%= link_to "Sign Out", destroy_admin_session_path, class: 'nav-link' %>
+        </li>  
+      </ul>
+    </div>
+</nav>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Semester</th>
-      <th>Year</th>
-      <th>Email</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Notes</th>
-      <th>Uin</th>
-      <th>Major</th>
-      <th>Finalgrade</th>
-      <th>Updatedgrade</th>
-      <th>Classname</th>
-      <th>Recletter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.semester%></td>
-        <td><%= student.year %></td>
-        <td><%= student.email %></td>
-        <td><%= student.firstname %></td>
-        <td><%= student.lastname %></td>
-        <td><%= student.notes %></td>
-        <td><%= student.uin %></td>
-        <td><%= student.major %></td>
-        <td><%= student.finalgrade %></td>
-        <td><%= student.updatedgrade %></td>
-        <td><%= student.classname %></td>
-        <td><%= student.recletter %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+
+<body>
+
+
+<div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+  <h1 style="text-align:center; color:#450012" class="text-uppercase">Students Page</h1>
+  <h3 style="text-align:center; color:#450012">View and search the list of students below</h3>
+</div>
+
+<div class="container">
+  <h2 style="text-align: center;  color:#450012"> Filter Students </h2>
+  <h4 style="text-align: center; margin-bottom: 1%; color:#450012"> Enter parameters below to filter students </h4>
+</div>
+
+<%= form_tag "/students", method: "GET" do %>
+<div class="container">
+    <div class="main-body">
+          <div class="row">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <h6 class="mb-0">First Name</h6>
+                    <div style="float:right" class="col text-secondary"> 
+                      <%= text_field_tag :search_by_firstname, params[:search_by_firstname] %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <h6 class="mb-0">Last Name</h6>
+                    <div class="col text-secondary">
+                      <%= text_field_tag :search_by_lastname, params[:search_by_lastname] %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <h6 class="mb-0">Rec Letter</h6>
+                    <div class="col text-secondary">
+                      <%= text_field_tag :search_by_recletter, params[:search_by_recletter] %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+<div style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 2%">
+  <%= submit_tag "Search", class: "btn buttonTo" %>
+
+</div>
+<% end %>
+
+<div class="new-student container">
+    <p style="font-size: 20px;">
+      <%= link_to 'Upload file of students', upload_students_path, class: "btn buttonTo" %> or
+      <%= link_to 'Add a new student', new_student_path, class: "btn buttonTo" %> 
+    </p>
+</div>
+<div style="overflow-x:auto;">
+  <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
+    <thead>
+      <tr style="background-color: white; ">
+        <th>Favorited</th>
+        <th>Semester</th>
+        <th>Year</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Notes</th>
+        <th>Uin</th>
+        <th>Major</th>
+        <th>Finalgrade</th>
+        <th>Updatedgrade</th>
+        <th>Classname</th>
+        <th>Recletter</th>
+        <th colspan="4">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><% if Favorite.all.where(uin: student.uin).find_each.count > 0 %>
+             <span class="bi bi-star yellow-color"> </span>
+             <% else %>
+             <span class="bi bi-star" style="font-size:50px"> </span>
+          <% end%> </td>
+          <td><%= student.semester%></td>
+          <td><%= student.year %></td>
+          <td><%= student.email %></td>
+          <td><%= student.firstname %></td>
+          <td><%= student.lastname %></td>
+          <td><%= student.notes %></td>
+          <td><%= student.uin %></td>
+          <td><%= student.major %></td>
+          <td><%= student.finalgrade %></td>
+          <td><%= student.updatedgrade %></td>
+          <td><%= student.classname %></td>
+          <td><%= student.recletter %></td>
+          <% if Favorite.all.where(uin: student.uin, classname: student.classname, year: student.year, semester: student.semester).find_each.count == 0 %>
+            <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year), :class => "btn buttonTo" %></td>
+          <% else %>
+            <td><%= button_to 'Unfavorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year), :class => "btn buttonTo" %></td>
+          <% end%>
+          <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
+          <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
+          <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>
+        </tr>
+      <% end %> 
+    </tbody>
 </table>
+</div>
+<div class="footer">
+	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
+</div>
 
-<br>
-
-
-
-<%= link_to 'New Student', new_student_path %>
-<br>
-<br>
-<h3> Import Students from CSV File </h3>
-
-<%= form_tag import_students_path, multipart: true do %>
-
-<%= form_with do |form| %>
-
-  <%= form.label :semester %>
-  <%= form.text_field :semester %>
-
-  <%= form.label :year %>
-  <%= form.text_field :year %>
-
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload Students" %>
-
-<% end %>
-
-<br>
-<br>
-
-<p>
-<% @images.each do |semester_images| %>
-  <%= semester_images.id%>
-  <%= link_to 'Show', semester_images %>
-<%end%>
-</p>
-
-
-
-<% end %>
+</body>

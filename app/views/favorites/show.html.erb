@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @favorite.lastname %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @favorite.firstname %>
+</p>
+
+<p>
+  <strong>Uin:</strong>
+  <%= @favorite.uin %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @favorite.email %>
+</p>
+
+<p>
+  <strong>Classname:</strong>
+  <%= @favorite.classname %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @favorite.notes %>
+</p>
+
+<p>
+  <strong>Major:</strong>
+  <%= @favorite.major %>
+</p>
+
+<p>
+  <strong>Finalgrade:</strong>
+  <%= @favorite.finalgrade %>
+</p>
+
+<p>
+  <strong>Updatedgrade:</strong>
+  <%= @favorite.updatedgrade %>
+</p>
+
+<p>
+  <strong>Recletter:</strong>
+  <%= @favorite.recletter %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @favorite.semester %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @favorite.year %>
+</p>
+
+<%= link_to 'Edit', edit_favorite_path(@favorite) %> |
+<%= link_to 'Back', favorites_path %>
