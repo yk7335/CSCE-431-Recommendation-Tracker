@@ -14,6 +14,7 @@ h1{
 }
 h2{
   font-size: 30px;
+  color:#450012;
 }
 h3{
   font-size: 40px;
@@ -28,6 +29,26 @@ nav{
   background-color: #450012;
   color: #fff;
 }
+
+.videos {  
+  display: grid;
+  grid-template-columns: 4fr 4fr;
+  grid-template-rows: .5fr;
+  gap: 0px 20px;
+  grid-template-areas:
+    "video1 video2";
+  margin-bottom:3%;
+  text-align:center;
+}
+.video1{
+  grid-area: video1; 
+}
+
+.video2{
+  grid-area: video2; 
+}
+
+
 </style>
 
 </head>
@@ -66,12 +87,20 @@ nav{
   </div>
 
 
-  <div> 
-  
+  <div class="container videos text-center">
+    <div class="video1 text-uppercase">
+      <h2> Video 1 title</h2> 
+      <iframe style="border-style:solid; border-width:thick;" src="https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/preview" width="400" height="300" allow="autoplay"></iframe>
+    </div>
+    <div class="video2 text-uppercase">
+      <h2> Video 2 title</h2>
+      <iframe style="border-style:solid; border-width:thick;" src="https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/preview" width="400" height="300" allow="autoplay"></iframe> 
+    </div>
   </div>
 
 
 </div>
+
 <div class="footer">
 	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
 </div>

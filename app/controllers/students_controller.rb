@@ -51,7 +51,26 @@ class StudentsController < ApplicationController
 
   # POST /students or /students.json
   def create
+    @courses = Course.all
     @student = Student.new(student_params)
+
+    check = false
+
+    if @courses.count >= 1
+      @courses.each do |course|
+        if (course.classname == @student.classname) && (course.semester == @student.semester) && (course.year == @student.year.to_s)
+          check = true
+        end
+      end
+    end
+
+    if not(check)
+      course_hash = Course.new
+      course_hash.classname = @student.classname
+      course_hash.semester = @student.semester
+      course_hash.year = @student.year
+      course_hash.save
+    end
 
     respond_to do |format|
       if @student.save
