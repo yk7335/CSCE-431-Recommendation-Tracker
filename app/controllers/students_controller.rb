@@ -106,7 +106,7 @@ class StudentsController < ApplicationController
 
   def favor
     Student.favor(params[:lastname], params[:firstname], params[:uin], params[:email], params[:classname], params[:notes], params[:major], params[:finalgrade], params[:updatedgrade], params[:recletter], params[:semester], params[:year])
-    redirect_to students_path, notice: 'Student Favorited'
+    redirect_back(fallback_location: root_path, notice: 'Student Favorited')
   end
 
   private

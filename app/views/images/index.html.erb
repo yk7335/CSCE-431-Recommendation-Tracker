@@ -1,8 +1,8 @@
 
-<p id="notice"><%= notice %></p>
 
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
 
 <style>
 body {
@@ -75,12 +75,14 @@ nav{
 
 <body>
 <div class="main">
-  <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+  <div class="text-center" style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%;margin-bottom:5%;">
+    <p id="notice"><%= notice %></p>
+
     <h1 style="text-align:center; color:#450012" class="text-uppercase">Images Page</h1>
     <h3 style="text-align:center; color:#450012">View uploaded images</h3>
   </div>
 
-<table style="border:1px solid; border-color: #450012; width:30%" class="center">
+<table style="border:1px solid; border-color: #450012; width:20%" class="center">
   <thead>
     <tr style="background-color: white; ">
       <th>UIN</th>
@@ -92,7 +94,6 @@ nav{
     <% @images.each do |image| %>
       <tr>
         <td><%= image.uin %></td>
-        <td><%= link_to 'Show', image, class: "btn buttonTo" %></td>
         <td><%= button_to "Delete", image, :method => "delete", :class => "btn buttonTo" %></td>
       </tr>
     <% end %>

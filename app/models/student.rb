@@ -92,12 +92,12 @@ class Student < ApplicationRecord
   end
 
   def next
-    self.class.where("id = ? - 1", id).first
+    self.class.where("id < ?", id).first
   end
 
   def previous
-    self.class.where("id = ? + 1", id).last
-  end
+    self.class.where("id > ?", id).last
+  end 
 
 
 

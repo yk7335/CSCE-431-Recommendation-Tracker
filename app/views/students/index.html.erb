@@ -1,8 +1,9 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 <p id="notice"><%= notice %></p>
 
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <style>
 body {
   margin:0;
@@ -182,6 +183,7 @@ nav{
     </div>
 <div style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 2%">
   <%= submit_tag "Search", class: "btn buttonTo" %>
+
 </div>
 <% end %>
 
@@ -195,7 +197,7 @@ nav{
   <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
     <thead>
       <tr style="background-color: white; ">
-        <th>Favorite</th>
+        <th>Favorited</th>
         <th>Semester</th>
         <th>Year</th>
         <th>Email</th>
@@ -216,7 +218,9 @@ nav{
       <% @students.each do |student| %>
         <tr>
           <td><% if Favorite.all.where(uin: student.uin).find_each.count > 0 %>
-             Y
+             <span class="bi bi-star yellow-color"> </span>
+             <% else %>
+             <span class="bi bi-star" style="font-size:50px"> </span>
           <% end%> </td>
           <td><%= student.semester%></td>
           <td><%= student.year %></td>
@@ -231,11 +235,10 @@ nav{
           <td><%= student.classname %></td>
           <td><%= student.recletter %></td>
           <% if Favorite.all.where(uin: student.uin, classname: student.classname, year: student.year, semester: student.semester).find_each.count == 0 %>
-            <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
+            <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year), :class => "btn buttonTo" %></td>
           <% else %>
-            <td><%= button_to 'unfavorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
+            <td><%= button_to 'Unfavorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year), :class => "btn buttonTo" %></td>
           <% end%>
-
           <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
           <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
           <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>
@@ -247,6 +250,5 @@ nav{
 <div class="footer">
 	<p>CSCE Recommendation Tracker for Dr. Lightfoot. Created by Jonathan Le, Yash Kalyani, Calvin Nguyen, and Mihiran Pandey.</p>
 </div>
-
 
 </body>

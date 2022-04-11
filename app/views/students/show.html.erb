@@ -107,8 +107,6 @@ nav{
   <div class="text-center">
 
     <h3 style="text-align:center; color:#450012">Current course: <%=@student.classname%></h3>
-    
-    <h4 style="text-align:center; color:#450012">Showing <%=@student.id%> / <%= @students.count%></h4>
 
     <%= link_to 'Previous', @previous_student, class: "btn buttonTo" %>
 
@@ -124,7 +122,7 @@ nav{
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     
-                    <div class="profile-picture">
+                    <div class="container profile-picture">
                       <% @Images.each do |image| %>
                         <% if @student.uin == image.uin  %>
                           <%= image_tag(image.photo, class: "style-image") %>
@@ -175,7 +173,14 @@ nav{
                   <div class="d-flex flex-column">
                   <h4>Notes</h4>
                     <div class="mt-3">
-                      <p class="text-secondary mb-1"><%= @student.notes %></p>
+                      <%= form_with(model: @student) do |form| %>
+                        <div class="field">
+                          <%= form.text_area :notes, :cols => "30", :rows => "10" %>
+                        </div>
+                        <div class="actions">
+                          <%= form.submit class: 'btn buttonTo' %>
+                        </div>
+                      <%end%>
                     </div>
                   </div>
                 </div>
