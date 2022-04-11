@@ -29,14 +29,19 @@ class StudentsController < ApplicationController
   def show
     @students = Student.all
     @Images = Image.all
+
+    @favorites = Favorite.all
+
     @student = Student.all.find(params[:id])
     @previous_student = @student.next
     @next_student = @student.previous
+
   end
 
   # GET /students/new
   def new
     @student = Student.new
+    @Images = Image.all
   end
 
   # GET /students/1/edit

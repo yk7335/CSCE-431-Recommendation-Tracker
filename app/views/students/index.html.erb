@@ -194,7 +194,8 @@ nav{
 <div style="overflow-x:auto;">
   <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
     <thead>
-      <tr style="background-color: white;">
+      <tr style="background-color: white; ">
+        <th>Favorite</th>
         <th>Semester</th>
         <th>Year</th>
         <th>Email</th>
@@ -214,6 +215,9 @@ nav{
     <tbody>
       <% @students.each do |student| %>
         <tr>
+          <td><% if Favorite.all.where(uin: student.uin).find_each.count > 0 %>
+             Y
+          <% end%> </td>
           <td><%= student.semester%></td>
           <td><%= student.year %></td>
           <td><%= student.email %></td>
@@ -226,7 +230,12 @@ nav{
           <td><%= student.updatedgrade %></td>
           <td><%= student.classname %></td>
           <td><%= student.recletter %></td>
-          <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year), class: "btn buttonTo" %></td>
+          <% if Favorite.all.where(uin: student.uin, classname: student.classname, year: student.year, semester: student.semester).find_each.count == 0 %>
+            <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
+          <% else %>
+            <td><%= button_to 'unfavorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
+          <% end%>
+
           <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
           <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
           <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>
