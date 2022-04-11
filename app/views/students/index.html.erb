@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-
+<head>
 <style>
 body {
   margin:0;
@@ -104,15 +104,16 @@ nav{
   box-shadow: none!important;
 }
 </style>
-
+</head>
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark">
     <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
-
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <%= link_to 'Students', students_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Favorites', favorites_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Courses', courses_path, class: 'nav-link' %>
@@ -234,6 +235,7 @@ nav{
           <% else %>
             <td><%= button_to 'unfavorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
           <% end%>
+
           <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
           <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
           <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>
