@@ -9,8 +9,8 @@ class StudentsController < ApplicationController
   def index
     @q = Student.ransack(params[:q])
     @students = @q.result
+    
     @images = Image.all
-
     if params[:search_by_firstname] && params[:search_by_firstname] != ''
       @students = @students.where('firstname ~* ?',
                                   params[:search_by_firstname])
@@ -29,7 +29,13 @@ class StudentsController < ApplicationController
   def show
     @students = Student.all
     @Images = Image.all
+
     @favorites = Favorite.all
+
+    @student = Student.all.find(params[:id])
+    @previous_student = @student.next
+    @next_student = @student.previous
+
   end
 
   # GET /students/new

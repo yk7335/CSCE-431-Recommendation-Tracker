@@ -83,7 +83,7 @@ nav{
       <th>Finalgrade</th>
       <th>Updatedgrade</th>
       <th>Recletter</th>
-      <th colspan="3">Actions</th>
+      <th colspan="4">Actions</th>
     </tr>
   </thead>
 
@@ -97,10 +97,11 @@ nav{
         <td><%= student.uin %></td>
         <td><%= student.finalgrade %></td>
         <td><%= student.updatedgrade %></td>
-        <td><%= student.recletter %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= button_to "Delete", student, :method => "delete", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= student.recletter%></td>
+        <td><%= best_in_place student, :recletter, :as => :select, :collection => [['YES', 'YES'], ['NO', 'NO'], ['UNDECIDED', 'UNDECIDED']] %></td>
+        <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
+        <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
+        <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>
       </tr>
     <% end %>
   </tbody>

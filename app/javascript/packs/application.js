@@ -4,11 +4,15 @@
 // that code so it'll be compiled.
 //= require jquery
 //= require jquery_ujs 
+//= require best_in_place
 
+//= require jquery-ui
+//= require best_in_place.jquery-ui
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import './gems.js.erb'
 
 import "bootstrap"
 import "../stylesheets/application"
@@ -18,6 +22,8 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(".best_in_place").best_in_place();
 
 $(function() {
     $('.view_details').click(function() {
@@ -41,4 +47,9 @@ $(function() {
           .slideUp('fast');
       }
     });
+  });
+
+  $(document).ready(function() {
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
   });
