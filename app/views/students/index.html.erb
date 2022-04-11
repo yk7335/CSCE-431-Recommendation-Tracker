@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-
+<head>
 <style>
 body {
   margin:0;
@@ -104,15 +104,16 @@ nav{
   box-shadow: none!important;
 }
 </style>
-
+</head>
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark">
     <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
-
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <%= link_to 'Students', students_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Favorites', favorites_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Courses', courses_path, class: 'nav-link' %>
@@ -193,7 +194,7 @@ nav{
 <div style="overflow-x:auto;">
   <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
     <thead>
-      <tr style="background-color: white; ">
+      <tr style="background-color: white;">
         <th>Semester</th>
         <th>Year</th>
         <th>Email</th>
@@ -206,7 +207,7 @@ nav{
         <th>Updatedgrade</th>
         <th>Classname</th>
         <th>Recletter</th>
-        <th colspan="3">Actions</th>
+        <th colspan="4">Actions</th>
       </tr>
     </thead>
 
@@ -225,7 +226,7 @@ nav{
           <td><%= student.updatedgrade %></td>
           <td><%= student.classname %></td>
           <td><%= student.recletter %></td>
-          <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year) %></td>
+          <td><%= button_to 'Favorite', favor_students_path(:lastname => student.lastname, :firstname => student.firstname, :uin => student.uin, :email => student.email, :classname => student.classname, :notes => student.notes, :major => student.major, :finalgrade => student.finalgrade, :updatedgrade => student.updatedgrade, :recletter => student.recletter, :semester => student.semester, :year => student.year), class: "btn buttonTo" %></td>
           <td><%= link_to 'Show', student, class: "btn buttonTo" %></td>
           <td><%= link_to 'Edit', edit_student_path(student), class: "btn buttonTo" %></td>
           <td><%= button_to "Delete", student, :method => "delete", :class => "btn buttonTo" %></td>

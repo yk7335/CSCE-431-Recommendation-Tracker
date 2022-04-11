@@ -1,49 +1,131 @@
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+body {
+  margin:0;
+  font-family: 'Montserrat';
+  background-color: #ebe8df;
+  min-height:100%;
+}
+h1{
+  font-size: 100px;
+}
+h2{
+  font-size: 30px;
+}
+h3{
+  font-size: 40px;
+}
+h4{
+  font-size: 20px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  text-align:center;
+}
+th {
+  background: #450012;
+  color:white;
+  
+}
+tr:nth-child(odd) {
+  background-color: #F5D5CB;
+}
+nav{
+  background-color: #450012;
+}
+.navbar .navbar-nav .nav-link:hover {
+  background-color: #450012;
+  color: #fff;
+}
+</style>
+</head>
+
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark">
+    <a style="background-color:transparent;" class="navbar-brand" href="#">CSCE Recommendation Tracker</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to 'Students', students_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Favorites', favorites_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Images', images_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item ">
+          <%= link_to "Help Page", help_students_path, class: 'nav-link' %>
+        </li>  
+        <li class="nav-item ms-auto">
+          <%= link_to "Sign Out", destroy_admin_session_path, class: 'nav-link' %>
+        </li>  
+      </ul>
+    </div>
+</nav>
+
+
+
+<body>
+<div class="main">
 <p id="notice"><%= notice %></p>
 
-<h1>Favorites</h1>
+    <div style="background-color:white; width:100%; padding-top:8%;padding-bottom:8%; margin-bottom:3%;">
+  <p class="notice" id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Lastname</th>
-      <th>Firstname</th>
-      <th>Uin</th>
-      <th>Email</th>
-      <th>Classname</th>
-      <th>Notes</th>
-      <th>Major</th>
-      <th>Finalgrade</th>
-      <th>Updatedgrade</th>
-      <th>Recletter</th>
-      <th>Semester</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1 style="text-align:center; font-size: 100px; color:#450012" class="text-uppercase">Favorites Page</h1>
+    <h3 style="text-align:center; color:#450012">List of favorited students</h3>
 
-  <tbody>
-    <% @favorites.each do |favorite| %>
-      <tr>
-        <td><%= favorite.lastname %></td>
-        <td><%= favorite.firstname %></td>
-        <td><%= favorite.uin %></td>
-        <td><%= favorite.email %></td>
-        <td><%= favorite.classname %></td>
-        <td><%= favorite.notes %></td>
-        <td><%= favorite.major %></td>
-        <td><%= favorite.finalgrade %></td>
-        <td><%= favorite.updatedgrade %></td>
-        <td><%= favorite.recletter %></td>
-        <td><%= favorite.semester %></td>
-        <td><%= favorite.year %></td>
-        <td><%= link_to 'Show', favorite %></td>
-        <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
-        <td><%= link_to 'Destroy', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <div style="overflow-x:auto;">
+    <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
+      <thead>
+        <tr style="background-color: white;">
+          <th>Lastname</th>
+          <th>Firstname</th>
+          <th>Uin</th>
+          <th>Email</th>
+          <th>Classname</th>
+          <th>Notes</th>
+          <th>Major</th>
+          <th>Finalgrade</th>
+          <th>Updatedgrade</th>
+          <th>Recletter</th>
+          <th>Semester</th>
+          <th>Year</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<%= link_to 'New Favorite', new_favorite_path %>
+      <tbody>
+        <% @favorites.each do |favorite| %>
+          <tr>
+            <td><%= favorite.lastname %></td>
+            <td><%= favorite.firstname %></td>
+            <td><%= favorite.uin %></td>
+            <td><%= favorite.email %></td>
+            <td><%= favorite.classname %></td>
+            <td><%= favorite.notes %></td>
+            <td><%= favorite.major %></td>
+            <td><%= favorite.finalgrade %></td>
+            <td><%= favorite.updatedgrade %></td>
+            <td><%= favorite.recletter %></td>
+            <td><%= favorite.semester %></td>
+            <td><%= favorite.year %></td>
+            <td><%= link_to 'Show', favorite %></td>
+            <td><%= link_to 'Edit', edit_favorite_path(favorite) %></td>
+            <td><%= link_to 'Destroy', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>

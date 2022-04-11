@@ -87,4 +87,14 @@ class Student < ApplicationRecord
     favorite_hash.save
   end
 
+  def next
+    self.class.where("id = ? - 1", id).first
+  end
+
+  def previous
+    self.class.where("id = ? + 1", id).last
+  end
+
+
+
 end
