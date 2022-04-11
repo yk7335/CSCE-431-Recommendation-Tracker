@@ -29,6 +29,7 @@ class StudentsController < ApplicationController
   def show
     @students = Student.all
     @Images = Image.all
+    @favorites = Favorite.all
   end
 
   # GET /students/new

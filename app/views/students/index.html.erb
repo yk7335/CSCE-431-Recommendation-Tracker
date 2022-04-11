@@ -194,6 +194,7 @@ nav{
   <table style="border:1px solid; border-color: #450012; width:90%; margin-bottom:5%;" class="center">
     <thead>
       <tr style="background-color: white; ">
+        <th>Favorite</th>
         <th>Semester</th>
         <th>Year</th>
         <th>Email</th>
@@ -206,13 +207,16 @@ nav{
         <th>Updatedgrade</th>
         <th>Classname</th>
         <th>Recletter</th>
-        <th colspan="3">Actions</th>
+        <th colspan="4">Actions</th>
       </tr>
     </thead>
 
     <tbody>
       <% @students.each do |student| %>
         <tr>
+          <td><% if Favorite.all.where(uin: student.uin).find_each.count > 0 %>
+             f
+          <% end%> </td>
           <td><%= student.semester%></td>
           <td><%= student.year %></td>
           <td><%= student.email %></td>
