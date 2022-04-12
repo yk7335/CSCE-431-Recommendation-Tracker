@@ -72,6 +72,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem "aws-sdk-s3", require: false
 gem "ransack", "~> 2.6"
 gem "brakeman"
+gem 'rubocop', '~> 1.27'
 gem 'rubocop-performance'
 gem 'rubocop-rails'
 gem 'rubocop-rspec'
