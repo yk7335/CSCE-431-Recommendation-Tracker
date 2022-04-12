@@ -45,10 +45,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'rspec-rails'
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -76,3 +72,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem "aws-sdk-s3", require: false
 gem "ransack", "~> 2.6"
 gem "brakeman"
+gem 'rubocop-performance'
+gem 'rubocop-rails'
+gem 'rubocop-rspec'
