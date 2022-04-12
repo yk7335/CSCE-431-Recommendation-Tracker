@@ -97,15 +97,68 @@ RSpec.describe Student, type: :model do
                           notes: 'very cool guy', uin: '100000', major: 'cs', finalgrade: 'A', updatedgrade: 'C',
                           classname: 'cs315', recletter: 'yes', year: '2021' , semester: 'Fall')
 
-    described_class.destroy(email: 'mihiranpandey@gmail.com', firstname: 'mihiran', lastname: 'pandey',
-                          notes: 'very cool guy', uin: '100000', major: 'cs', finalgrade: 'A', updatedgrade: 'C',
-                          classname: 'cs315', recletter: 'yes', year: '2021' , semester: 'Fall')
+    described_class.destroy()
+    
     expect(subject).to eq(false)
   end
 end
-# ------------------------------------
 
+# ------------- unit test for import func -----------
+RSpec.describe Student, type: :feature do
+  subject do
+    described_class.import(file_fixture("test.csv"),"2021", "Fall", [File.open(Rails.root.join(file_fixture("pfp.jpg")))], "CS315")
+  end
+  
+    it 'imports properly' do
+      expect(subject).to eq(240)
+    end
+end
 
+# ------------ unit test for favorite student --------
+RSpec.describe Student, type: :feature do
+  subject do
+    described_class.favor('mihiranpandey@gmail.com', 'mihiran', 'pandey', 'is cool', 'cs' , '0000001', 'A', 'B', 'cs315', 'YES', 'Fall', '2021')
+  end
+  
+  it 'is valid' do
+    expect(subject).to eq(true)
+  end
+end
+
+# -------------- unit test for creating course ---------
+RSpec.describe Course, type: :model do
+  subject do
+    described_class.new(classname: 'cs315', semester: 'Fall', year: '2022')
+  end
+  
+    it 'is valid with valid attributes' do
+      expect(subject).to be_valid
+    end
+  
+end
+# --------------------------------------------------------
+
+# -------------- unit test for deleting course ------------
+RSpec.describe Course, type: :model do
+  subject do
+    described_class.new(classname: 'cs315', semester: 'Fall', year: '2022')
+    described_class.destroy(classname: 'cs315', semester: 'Fall', year: '2022')
+    expect(subject).to eq(false)
+  end
+end
+# ---------------------------------------------------------
+
+# ------------ unit test for favorite student --------
+# RSpec.describe Student, type: :feature do
+#   subject do
+#     described_class.new(email: 'mihiranpandey@gmail.com', firstname: 'mihiran', lastname: 'pandey', notes: 'is cool', major: 'cs' , uin: '0000001', finalgrade: 'A', updatedgrade: 'B', classname: 'cs315', recletter: 'YES', semester: 'Fall', year: '2021')
+#   end
+  
+#   it 'is valid' do
+#     expect(subject).to eq(true)
+#   end
+# end
+# -----------------------------------------------------
 
 # Command to run: rspec spec/unit/unit_spec.rb               to run both         rails spec .
 # here is the doc again: https://docs.google.com/document/d/1mS5kiGjjqbpg_ckmAx3RkvkS8a--MjqN/edit
