@@ -367,7 +367,6 @@ DEPENDENCIES
   ransack (~> 2.6)
   rexml
   rspec-rails
-  rubocop
   rubocop-performance
   rubocop-rails
   rubocop-rspec
