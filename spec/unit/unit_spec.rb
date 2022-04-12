@@ -149,15 +149,15 @@ end
 # ---------------------------------------------------------
 
 # ------------ unit test for favorite student --------
-# RSpec.describe Student, type: :feature do
-#   subject do
-#     described_class.new(email: 'mihiranpandey@gmail.com', firstname: 'mihiran', lastname: 'pandey', notes: 'is cool', major: 'cs' , uin: '0000001', finalgrade: 'A', updatedgrade: 'B', classname: 'cs315', recletter: 'YES', semester: 'Fall', year: '2021')
-#   end
+RSpec.describe Favorite, type: :model do
+  subject do
+    described_class.new(email: 'mihiranpandey@gmail.com', firstname: 'mihiran', lastname: 'pandey', notes: 'is cool', major: 'cs' , uin: '0000001', finalgrade: 'A', updatedgrade: 'B', classname: 'cs315', recletter: 'YES', semester: 'Fall', year: '2021')
+  end
   
-#   it 'is valid' do
-#     expect(subject).to eq(true)
-#   end
-# end
+  it 'is valid' do
+    expect(subject).to be_valid
+  end
+end
 # -----------------------------------------------------
 
 # Command to run: rspec spec/unit/unit_spec.rb               to run both         rails spec .
