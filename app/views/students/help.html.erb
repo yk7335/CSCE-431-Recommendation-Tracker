@@ -30,33 +30,25 @@ nav{
   color: #fff;
 }
 
-.videos {  
-  display: grid;
-  grid-template-columns: 4fr 4fr;
-  grid-template-rows: .5fr;
-  gap: 0px 20px;
-  grid-template-areas:
-    "video1 video2";
-  margin-bottom:3%;
-  text-align:center;
-}
-.video1{
-  grid-area: video1; 
-}
-
-.video2{
-  grid-area: video2; 
-}
-
 .instructions{
   width: 60%;
   margin-bottom:5%;
 
 }
+
 .accordian-header{
   background-color: #450012;
   color:white;
 }
+.accordian-button{
+  font-size: inherit;
+}
+.accordian-button:not(.collapsed){
+  color: inherit;
+  background:#450012;
+  color: white;
+}
+
 </style>
 
 </head>
@@ -95,14 +87,14 @@ nav{
   </div>
 
 
-  <div class="container videos text-center">
-    <div class="video1 text-uppercase">
+  <div class="text-center" style="margin-bottom:5%">
+    <div class="text-uppercase">
       <h2> Deployment</h2> 
-      <iframe style="border-style:solid; border-width:thick;" src="https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/preview" width="400" height="300" allow="autoplay"></iframe>
+      <iframe style="border-style:solid; border-width:thick; margin-bottom:5%;" src="https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/preview" width="640" height="480" allow="autoplay"></iframe>
     </div>
-    <div class="video2 text-uppercase">
+    <div class="text-uppercase">
       <h2> Directions</h2>
-      <iframe style="border-style:solid; border-width:thick;" src="https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/preview" width="400" height="300" allow="autoplay"></iframe> 
+      <iframe style="border-style:solid; border-width:thick;" src="https://drive.google.com/file/d/1z2BMYYXVlVGrTFymwCzJ8dSaEgmxINZr/preview" width="640" height="480" allow="autoplay"></iframe>
     </div>
   </div>
 
@@ -116,7 +108,15 @@ nav{
         </h2>
         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
           <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            <ol>
+              <li>Head to students page</li>
+              <li>Click on "Upload file of students"</li>
+              <li>Select and fill out semester, year, and class</li>
+              <li>Select csv file you want to upload</li>
+              <li>Select corresponding images for that csv file <strong>(# of images must match number of students in csv roster file)</strong></li>
+              <li>Click on "Upload Student"</li>
+
+            </ol>
           </div>
         </div>
       </div>
@@ -128,7 +128,17 @@ nav{
         </h2>
         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
           <div class="accordion-body">
-            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            You are allowed to filter by First Name, Last Name, and RecLetter choices. 
+            <ol>
+              <li>Type the information in the filtering fields. Make sure to inlcude the correct spelling as the search is precise</li>
+              <li>Click search and the filtering should be applied below</li>
+            </ol>
+            Tips:
+            <ul>
+              <li>If you are looking for First name: Searching "Jo" will list all students with "Jo" in their name.</li>
+              <li>To clear the search, click students to get all students</li>
+              <li>Not case-sensitive</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -140,7 +150,11 @@ nav{
         </h2>
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
           <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          <ul>
+            <li>Favorites and view all favorites</li>
+            <li>View students by courses</li>
+            <li>Next and Previous on students</li>
+          </ul>
           </div>
         </div>
       </div>
