@@ -152,7 +152,7 @@ footer {
       <th>Classname</th>
       <th>Semester</th>
       <th>Year</th>
-      <th colspan="1">Action</th>
+      <th colspan="2">Action</th>
     </tr>
   </thead>
 
@@ -163,6 +163,7 @@ footer {
         <td><%= course.semester %></td>
         <td><%= course.year %></td>
         <td><%= link_to 'Show', course, class: "btn buttonTo" %></td>
+        <td><%= button_to 'Delete', delc_courses_path(:classname => course.classname,:semester => course.semester, :year => course.year), :class => "btn buttonTo" %></td>
       </tr>
     <% end %>
   </tbody>

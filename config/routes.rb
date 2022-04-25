@@ -33,6 +33,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :courses do 
+    member do
+      post :delc
+    end
+  end
+
   resources :images do 
     collection { post :import }
   end
