@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  
+
   resources :favorites
 
   resources :courses
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'help', on: :collection
     get 'upload', on: :collection
   end
-  
+
   resources :students do 
     collection { post :import }
   end
@@ -42,8 +42,7 @@ Rails.application.routes.draw do
   resources :images do 
     collection { post :import }
   end
-  
-  resources :users
 
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
