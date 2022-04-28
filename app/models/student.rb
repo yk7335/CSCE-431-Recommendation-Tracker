@@ -13,10 +13,10 @@ class Student < ApplicationRecord
   # validates :major, presence: true
   # validates :finalgrade, presence: true
   # validates :updatedgrade, presence: true
-  # validates :classname, presence: true
+  validates :classname, presence: true
   # validates :recletter, presence: true
-  # validates :semester, presence: true
-  # validates :year, presence: true
+  validates :semester, presence: true
+  validates :year, presence: true
   
   # csv upload
   def self.import(file, year, semester, files, classn)
