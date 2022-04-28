@@ -12,6 +12,7 @@ module RecommendationTracker
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.assets.initialize_on_precompile = false
     # config.web_console.permissions = '172.17.0.1'
     # Configuration for the application, engines, and railties goes here.
     #

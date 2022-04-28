@@ -3,6 +3,8 @@
 class Student < ApplicationRecord
   has_one :image
   has_many :course
+  has_many :favorite
+
   # validates :email, presence: true
   # validates :firstname, presence: true
   # validates :lastname, presence: true
@@ -67,22 +69,36 @@ class Student < ApplicationRecord
     end
     # redirect_to students_path, notice: "Students Imported Successfully"
   end
-
   
-  # def favor
-  #   favorite_hash.lastname = lastname
-  #   favorite_hash.firstname = student.firstname
-  #   favorite_hash.uin = student.uin
-  #   favorite_hash.email = student.email
-  #   favorite_hash.classname = student.classname
-  #   favorite_hash.notes =  student.notes
-  #   favorite_hash.major = student.major
-  #   favorite_hash.finalgrade =  student.finalgrade
-  #   favorite_hash.updatedgrade = student.updatedgrade
-  #   favorite_hash.recletter = student.recletter
-  #   favorite_hash.semester = student.semester
-  #   favorite_hash.year = student.year
-  #   favorite_hash.save
-    # redirect_to favorites_path, notice: 'Student was favorited.'
-  # end
+  def self.favor(lastname, firstname, uin, email, classname, notes, major, finalgrade, updatedgrade, recletter, semester, year)
+    if Favorite.all.where(uin: uin).find_each.count < 1
+      favorite_hash = Favorite.new
+      favorite_hash.lastname =  lastname
+      favorite_hash.firstname =  firstname
+      favorite_hash.uin = uin
+      favorite_hash.email = email
+      favorite_hash.classname = classname
+      favorite_hash.notes =  notes
+      favorite_hash.major = major
+      favorite_hash.finalgrade =  finalgrade
+      favorite_hash.updatedgrade = updatedgrade
+      favorite_hash.recletter = recletter
+      favorite_hash.semester = semester
+      favorite_hash.year = year
+      favorite_hash.save
+    else
+      Favorite.all.find_by(uin: uin).destroy
+    end
+  end
+
+  def next
+    self.class.where("id < ?", id).last
+  end
+
+  def previous
+    self.class.where("id > ?", id).first
+  end 
+
+
+
 end

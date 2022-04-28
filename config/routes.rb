@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   resources :favorites
+
   resources :courses
   resources :images
   # root 'students#index'
@@ -25,11 +27,22 @@ Rails.application.routes.draw do
     collection { post :import }
   end
 
+  resource :students do 
+    member do
+      post :favor
+    end
+  end
+
+  resource :courses do 
+    member do
+      post :delc
+    end
+  end
+
   resources :images do 
     collection { post :import }
   end
 
   resources :users
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
