@@ -58,6 +58,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def delc
+    Course.delc(params[:classname], params[:semester], params[:year])
+    redirect_back(fallback_location: courses_path, notice: 'Course Deleted')
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
