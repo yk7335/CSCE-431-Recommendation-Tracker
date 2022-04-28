@@ -172,27 +172,6 @@ nav{
         </td>
       </tr>
       
-      <% if @students.where(uin: student.uin).count > 1 %>
-        <% @students.where(uin: student.uin).find_each do |studentr| %>
-          <% if studentr.classname != student.classname %>
-            <tr>
-              <td> Recurring Student </td>
-              <td><%= studentr.email %></td>
-              <td><%= studentr.firstname %></td>
-              <td><%= studentr.lastname %></td>
-              <td><%= studentr.notes %></td>
-              <td><%= studentr.uin %></td>
-              <td><%= studentr.finalgrade %></td>
-              <td><%= studentr.updatedgrade %></td>
-              <td><%= studentr.recletter%></td>
-              <td><%= studentr.classname %></td> 
-              <td><%= studentr.semester %></td> 
-              <td><%= studentr.year %></td>
-              <td><%= link_to 'Show', studentr, class: "btn buttonTo" %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      <% end %>
     <% end %>
   </tbody>
 </table>
