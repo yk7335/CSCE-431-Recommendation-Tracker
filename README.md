@@ -75,6 +75,10 @@ The final environment variable is the email used to access the application
 
 ## Deployment ##
 
+Here is a video for step by step instructions on how to deploy: https://drive.google.com/file/d/1skh4dptZLSv8B1wBKtFzcAInd_9ww17t/view
+
+If you rather read written instructions they can be found below.
+
 To deploy the app on your heroku account - 
 1. Fork this GitHub repository into a repository of your own making
 2. Create a new Heroku Pipeline
