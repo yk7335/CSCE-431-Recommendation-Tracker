@@ -63,11 +63,29 @@ If you want to duplicate this application locally, you will need to set up Googl
 
 and save them into your development.rb file
 
+Similarly you will need to set up an aws connection to save images onto the application. You will need the following environment variables to proceed with that:
+
+`AWS_ACCESS_KEY`
+`AWS_SECRET_KEY`
+
+The final environment variable is the email used to access the application
+
+`EMAIL_SECRET`
+
 
 ## Deployment ##
 
-** Add instructions about how to deploy to Heroku
+To deploy the app on your heroku account - 
+1. Fork this GitHub repository into a repository of your own making
+2. Create a new Heroku Pipeline
+3. Connect your forked repository to your heroku account
+4. Create a new app under production from your connected GitHub repo
+5. Configure the environment variables listed above
+6. Build and release the application
 
+For more detailed instructions on automatic deployment follow the instructions located at: https://devcenter.heroku.com/articles/github-integration
+
+If you rather deploy manually you can follow the instructions located at: https://devcenter.heroku.com/articles/git
 
 ## CI/CD ##
 
